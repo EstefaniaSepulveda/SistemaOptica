@@ -10,16 +10,16 @@ import "vue-notifyjs/themes/default.css";
 Vue.config.productionTip = false;
 Vue.use(VueApollo)
 
-import {ApolloClient} from 'apollo-client';
-import {HttpLink} from 'apollo-link-http';
-import {InMemoryCache} from 'apollo-cache-inmemory';
+import { ApolloClient } from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import VueApollo from 'vue-apollo';
 
 const getHeaders = () => {
   const headers = {};
   const token = window.localStorage.getItem("apollo-token");
-  if(token){
+  if (token) {
     headers.authorization = `Bearer ${token}`
   }
   return headers
@@ -42,10 +42,26 @@ const apolloProvider = new VueApollo({
 });
 //fin conexion hasura
 
+Vue.component('modal', {
+  template: '#modal-template'
+})
+
 Vue.use(PaperDashboard);
 
 /* eslint-disable no-new */
+Vue.component('modal', {
+  template: '#modal-template'
+})
+
+// start app
+
+
+
 new Vue({
+  el: '#app',
+  data: {
+    showModal: false
+  },
   router,
   apolloProvider,
   render: h => h(App)

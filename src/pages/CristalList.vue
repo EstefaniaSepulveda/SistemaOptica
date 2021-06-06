@@ -1,12 +1,12 @@
 <template>
-    <div class="list-of-productos">
-      <producto-item
-        v-for="armazon in armazones"
-        :key="armazon.idArmazon"
-        :armazon="armazon"
-        class="producto-item"
-      ></producto-item>
-    </div>
+  <div class="list-of-productos">
+    <cristal-item
+      v-for="armazon in armazones"
+      :key="armazon.idArmazon"
+      :armazon="armazon"
+      class="cristal-item"
+    ></cristal-item>
+  </div>
 </template>
 
 <script>
@@ -16,12 +16,12 @@ import CristalItem from "./CristalItem";
 
 import gql from "graphql-tag";
 const GET_CRISTAL = gql`
-  query getCristal{
-  cristal {
-    descripcion
-    nombreCristal
+  query getCristal {
+    cristal {
+      descripcion
+      nombreCristal
+    }
   }
-}
 `;
 export default {
   name: "CristalItem",

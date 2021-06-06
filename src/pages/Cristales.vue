@@ -1,31 +1,49 @@
 <template>
   <div>
-
     <div class="row">
-      <stats-card class="col">
-        <div class="text-center" slot="content">
-          <p>{{ cristal.nombreCristal }}</p>
+      <card title="Cristales">
+        <div slot="raw-content" class="table-responsive">
+          <paper-table
+            type="hover"
+            class="col-12"
+            :data="tableData"
+            :columns="table.columns"
+          >
+            <template slot-scope="{ row }">
+              <td>{{ row.nombreCristal }}</td>
+              <td>
+                <b>{{ row.descripcion }}</b>
+              </td>
+              <td>${{ row.valorCristal }}</td>
+              <td>
+                <p-button type="success" icon @click.native="handleEdit(row)">
+                  <i class="ti ti-check"></i>
+                </p-button>
+                <p-button
+                  style="margin-left: 5px"
+                  type="danger"
+                  icon
+                  @click.native="handleDelete(row)"
+                >
+                  <i class="ti ti-close"></i>
+                </p-button>
+              </td>
+            </template>
+          </paper-table>
         </div>
-      </stats-card>
-    </div>
-
-    <div class="list-of-productos">
-      <producto-item
-        v-for="cristal in cristales"
-        :key="cristal.idCristal"
-        :cristal="cristal"
-        class="cristales"
-      ></producto-item>
+      </card>
     </div>
   </div>
 </template>
 
 <script>
-import { StatsCard } from "@/components";
+import { PaperTable } from "@/components";
 import gql from "graphql-tag";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import ProductoItem from "./ProductoItem";
+import Card from "../components/Cards/Card.vue";
 
+const tableColumns = ["Nombre", "Detalle", "Valor"];
 
 const GET_CRISTAL = gql`
   query getCristales {
@@ -40,17 +58,29 @@ const GET_CRISTAL = gql`
 
 export default {
   name: "Cristales",
-  components: { StatsCard, ProductoItem },
+  components: { ProductoItem, PaperTable },
 
   data() {
     return {
       cristales: [],
+      cristal: {},
+
+      table: {
+        columns: [...tableColumns],
+      },
     };
+  },
+  computed: {
+    tableData: function () {
+      if (this.cristales && this.cristales.length) {
+        return this.cristales;
+      }
+      return [];
+    },
   },
   apollo: {
     cristales: {
       query: GET_CRISTAL,
-
       update: (data) => data.cristal,
     },
   },
@@ -64,5 +94,18 @@ export default {
 .card {
   margin-left: 10px;
   margin-right: 10px;
+  width: 100%;
+}
+</style>
+
+<style scoped>
+.btn-success {
+  background-color: #229863;
+  border-color: #229863;
+}
+
+.btn-success:hover{
+  background-color: #1c8053;
+  border-color: #1c8053;
 }
 </style>

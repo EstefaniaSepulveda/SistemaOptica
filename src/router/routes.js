@@ -2,6 +2,13 @@ import DashboardLayout from "@/layout/dashboard/DashboardLayout.vue";
 // GeneralViews
 import NotFound from "@/pages/NotFoundPage.vue";
 
+import Vue from "vue";
+import Router from "vue-router";
+
+//import App from "./App";
+import Home from "@/pages/Home.vue";
+import Login from "@/pages/Login.vue";
+import Register from "@/pages/Register.vue";
 
 
 import Registro from "@/pages/Registro.vue";
@@ -15,8 +22,25 @@ const routes = [
   {
     path: "/",
     component: DashboardLayout,
-    redirect: "/armazonAcetato",
+    redirect: "/home",
     children: [
+      {
+        path: "home",
+        name: "Home",
+        component: Home
+      },
+      {
+        path: "login",
+        name: "Login",
+        component: Login
+        
+      },
+      {
+        path: "register",
+        name: "Register",
+        component: Register
+        
+      },
       {
         path: "carroCompra",
         name: "Carro",
@@ -82,6 +106,9 @@ const routes = [
   { path: "*", component: NotFound }
 ];
 
+const router = new Router({
+  routes
+});
 /**
  * Asynchronously load view (Webpack Lazy loading compatible)
  * The specified component must be inside the Views folder

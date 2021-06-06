@@ -1,5 +1,31 @@
 <template>
-  <div :key="armazon.idArmazon">
+  <div>
+    <div>
+      <div name="modal">
+        <div class="modal-mask">
+          <div class="modal-wrapper">
+            <div class="modal-container">
+              <div class="modal-header">
+                <slot name="header"> default header </slot>
+              </div>
+
+              <div class="modal-body">
+                <slot name="body"> default body </slot>
+              </div>
+
+              <div class="modal-footer">
+                <slot name="footer">
+                  default footer
+                  <button class="modal-default-button" @click="$emit('close')">
+                    OK
+                  </button>
+                </slot>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <card class="card-user">
       <div class="wrap-imagen" slot="image">
         <img class="imagen" :src="armazon.imagen" />
@@ -15,8 +41,8 @@
       </div>
       <div>
         <!--AQUI QUIERO EL MODAL-->
+
         <p-button type="info" simple>Seleccionar Cristal</p-button>
-        
       </div>
     </card>
   </div>
@@ -30,6 +56,12 @@ export default {
   name: "ProductoItem",
   props: ["armazon"],
   components: { Card, PButton },
+
+  data() {
+    return {
+      showModal: false,
+    };
+  },
 };
 </script>
 
@@ -38,9 +70,10 @@ export default {
   text-align: center;
 }
 
-.card .card-image img {
+.card .card-image {
   width: 100%;
   border-radius: none;
+  height: 152px;
 }
 .card {
   width: 30%;
