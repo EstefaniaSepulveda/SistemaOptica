@@ -17,6 +17,7 @@
     "apollo-link-http": "^1.5.17",
     "axios": "^0.21.1",
     "bootstrap": "^4.0.0",
+    "bootstrap-vue": "^2.21.2",
     "chartist": "^0.11.0",
     "es6-promise": "^4.2.4",
     "graphql": "^15.5.0",
@@ -25,7 +26,8 @@
     "vue-apollo": "^3.0.7",
     "vue-clickaway": "^2.1.0",
     "vue-notifyjs": "^0.3.0",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.10.0",

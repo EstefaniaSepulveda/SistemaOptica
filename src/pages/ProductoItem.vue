@@ -1,31 +1,5 @@
 <template>
   <div>
-    <div>
-      <div name="modal">
-        <div class="modal-mask">
-          <div class="modal-wrapper">
-            <div class="modal-container">
-              <div class="modal-header">
-                <slot name="header"> default header </slot>
-              </div>
-
-              <div class="modal-body">
-                <slot name="body"> default body </slot>
-              </div>
-
-              <div class="modal-footer">
-                <slot name="footer">
-                  default footer
-                  <button class="modal-default-button" @click="$emit('close')">
-                    OK
-                  </button>
-                </slot>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <card class="card-user">
       <div class="wrap-imagen" slot="image">
         <img class="imagen" :src="armazon.imagen" />
@@ -41,8 +15,16 @@
       </div>
       <div>
         <!--AQUI QUIERO EL MODAL-->
+        <div>
+          <b-button @click="showModal = !showModal">Launch demo modal</b-button>
 
-        <p-button type="info" simple>Seleccionar Cristal</p-button>
+          <b-modal v-model="showModal" id="modal-1" title="BootstrapVue">
+            <div class="d-block">Hello From My Modal!</div>
+            <b-button @click="showModal=false">Close Me</b-button>
+            <b-button @click="toggleModal">Carro</b-button>
+            
+          </b-modal>
+        </div>
       </div>
     </card>
   </div>

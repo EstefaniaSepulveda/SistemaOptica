@@ -5,7 +5,7 @@ import router from "./router/index";
 import PaperDashboard from "./plugins/paperDashboard";
 import "vue-notifyjs/themes/default.css";
 
-
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 //conexion a hasura
 Vue.config.productionTip = false;
 Vue.use(VueApollo)
@@ -42,16 +42,12 @@ const apolloProvider = new VueApollo({
 });
 //fin conexion hasura
 
-Vue.component('modal', {
-  template: '#modal-template'
-})
-
 Vue.use(PaperDashboard);
 
-/* eslint-disable no-new */
-Vue.component('modal', {
-  template: '#modal-template'
-})
+// Make BootstrapVue available throughout your project
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
 
 // start app
 
