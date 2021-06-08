@@ -1,12 +1,14 @@
 <template>
   <div class="home">
-    <producto-list />
+    <productoList></productoList>
+    <productoItem></productoItem>
   </div>
 </template>
 <script>
 import ProductoList from "./ProductoList";
+import ProductoItem from "./ProductoItem";
 export default {
   name: "home",
-  components: ProductoList,
+  components: { ProductoList, ProductoItem },
 };
 </script>
