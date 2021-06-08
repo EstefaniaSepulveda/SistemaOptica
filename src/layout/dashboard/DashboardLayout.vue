@@ -9,11 +9,11 @@
           icon="ti-eye"
         />
         <sidebar-link to="/registro" name="Registro" icon="ti-user" />
-        <sidebar-link to="/cristales" name="Cristal" icon="ti-eye"/>
+       <!-- <sidebar-link to="/cristales" name="Cristal" icon="ti-eye"/>
         <sidebar-link to="/carroCompra" name="Carro" icon="ti-eye"/>
         <sidebar-link to="/login" name="Login" icon="ti-eye"/>
         <sidebar-link to="/register" name="Register" icon="ti-eye"/>
-        <!--<sidebar-link to="/armazonMetal" name="Armazon Metalico" icon="ti-eye"/>
+        <sidebar-link to="/armazonMetal" name="Armazon Metalico" icon="ti-eye"/>
         <sidebar-link to="/dashboard" name="Dashboard" icon="ti-eye"/>
         <sidebar-link to="/stats" name="User Profile" icon="ti-user"/>
         <sidebar-link to="/table-list" name="Table List" icon="ti-view-list-alt"/>

@@ -6,7 +6,7 @@
         <form @submit.prevent="submit">
           <fieldset>
             <input type="text" placeholder="Nombre" v-model="nombre" />
-            
+
             <input
               type="text"
               placeholder="Apellido Paterno"
@@ -30,7 +30,7 @@
               v-model="contrasena"
             />
           </fieldset>
-          <input class="button-primary" type="submit" value="Send" />
+          <input class="button-primary" type="submit" value="Aceptar" />
         </form>
       </div>
     </div>
@@ -106,8 +106,8 @@ export default {
           telefono,
         },
         update: (cache, { data: { insert_cliente } }) => {
-         console.log(insert_cliente);
-        }
+          console.log(insert_cliente);
+        },
       });
       this.nombre = "";
       this.run = "";

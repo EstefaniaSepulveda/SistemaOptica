@@ -5,7 +5,7 @@ import NotFound from "@/pages/NotFoundPage.vue";
 import Vue from "vue";
 import Router from "vue-router";
 
-//import App from "./App";
+
 import Home from "@/pages/Home.vue";
 import Login from "@/pages/Login.vue";
 import Register from "@/pages/Register.vue";
@@ -22,7 +22,7 @@ const routes = [
   {
     path: "/",
     component: DashboardLayout,
-    redirect: "/home",
+    redirect: "/Home",
     children: [
       {
         path: "home",

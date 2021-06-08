@@ -16,11 +16,11 @@
       <div>
         <!--AQUI QUIERO EL MODAL-->
         <div>
-          <b-button @click="showModal = !showModal">Launch demo modal</b-button>
+          <b-button @click="showModal = !showModal">Seleccionar Cristal</b-button>
 
           <b-modal v-model="showModal" id="modal-1" title="BootstrapVue">
             <div class="d-block">Hello From My Modal!</div>
-            <b-button @click="showModal=false">Close Me</b-button>
+            
             <b-button @click="toggleModal">Carro</b-button>
             
           </b-modal>
