@@ -20,11 +20,10 @@
             >Seleccionar Cristal</b-button
           >
 
-          <b-modal v-model="showModal" id="modal-1" title="BootstrapVue">
-            <div class="d-block">
-              
+          <b-modal v-model="showModal" id="modal-1" title="Cristales">
+            <div class="list-of-productos">
+              <cristales></cristales>
             </div>
-
             <b-button @click="toggleModal">Carro</b-button>
           </b-modal>
         </div>
@@ -37,10 +36,12 @@
 import { Card } from "@/components";
 import { Button as PButton } from "@/components";
 
+import Cristales from "./Cristales";
+
 export default {
   name: "ProductoItem",
   props: ["armazon"],
-  components: { Card, PButton },
+  components: { Card, PButton, Cristales},
 
   data() {
     return {
@@ -48,6 +49,7 @@ export default {
       toggleModal: false,
     };
   },
+  
 };
 </script>
 

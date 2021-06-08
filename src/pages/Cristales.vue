@@ -40,8 +40,8 @@
 import { PaperTable } from "@/components";
 import gql from "graphql-tag";
 import { InMemoryCache } from "apollo-cache-inmemory";
-import ProductoItem from "./ProductoItem";
-import Card from "../components/Cards/Card.vue";
+
+
 
 const tableColumns = ["Nombre", "Detalle", "Valor"];
 
@@ -58,7 +58,7 @@ const GET_CRISTAL = gql`
 
 export default {
   name: "Cristales",
-  components: { ProductoItem, PaperTable },
+  components: { PaperTable },
 
   data() {
     return {
