@@ -16,13 +16,16 @@
       <div>
         <!--AQUI QUIERO EL MODAL-->
         <div>
-          <b-button @click="showModal = !showModal">Seleccionar Cristal</b-button>
+          <b-button @click="showModal = !showModal"
+            >Seleccionar Cristal</b-button
+          >
 
           <b-modal v-model="showModal" id="modal-1" title="BootstrapVue">
-            <div class="d-block">Hello From My Modal!</div>
-            
+            <div class="d-block">
+              
+            </div>
+
             <b-button @click="toggleModal">Carro</b-button>
-            
           </b-modal>
         </div>
       </div>
@@ -42,6 +45,7 @@ export default {
   data() {
     return {
       showModal: false,
+      toggleModal: false,
     };
   },
 };
