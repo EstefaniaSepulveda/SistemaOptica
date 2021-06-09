@@ -20,7 +20,7 @@
             >Seleccionar Cristal</b-button
           >
 
-          <b-modal size="xl" v-model="showModal" id="modal-1">
+            <b-modal size="xl" v-model="showModal" id="modal-1">
             <cristales></cristales>
 
             <b-button @click="toggleModal">Carro</b-button>

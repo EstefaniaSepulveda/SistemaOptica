@@ -4,33 +4,47 @@
       <div class="divcont">
         <h3>Registro</h3>
         <form @submit.prevent="submit">
-          <fieldset>
-            <input type="text" placeholder="Nombre" v-model="nombre" />
+          
+            <input
+              type="text"
+              placeholder="Nombre"
+              v-model="nombre"
+            />
 
             <input
               type="text"
+              
               placeholder="Apellido Paterno"
               v-model="apellidoP"
             />
             <input
               type="text"
+              
               placeholder="Apellido Materno"
               v-model="apellidoM"
             />
-            <input type="text" placeholder="Run" v-model="run" />
+            <input
+              type="text"
+              
+              placeholder="Run"
+              v-model="run"
+            />
             <input
               type="email"
+              :class="{ error: validarCorreo }"
               placeholder="Correo Electronico"
               v-model="correo"
             />
             <input type="text" placeholder="912345678" v-model="telefono" />
             <input
               type="password"
+              :class="{ error: validarContraseña }"
               placeholder="Contraseña"
               v-model="contrasena"
             />
-          </fieldset>
+        
           <input class="button-primary" type="submit" value="Aceptar" />
+          
         </form>
       </div>
     </div>
@@ -119,6 +133,27 @@ export default {
 
       alert("Cliente creado");
     },
+  },
+  computed: {
+    validarCorreo() {
+      var exp =
+        /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+      if (exp.test(this.correo)) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+    validarContraseña() {
+      var exp = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/;
+      if (exp.test(this.contraseña)) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+
   },
 };
 </script>
