@@ -169,15 +169,7 @@ body {
   font-family: "Roboto";
   color: #333;
 }
-/*fondo*/
-.divLogin {
-  background-size: cover;
-  background-position: center center;
-  width: 100%;
-  display: flex;
-  align-content: center;
-  align-items: center;
-}
+
 /*cuadro de inicio de sesion*/
 .divLogin .container {
   width: 100%;

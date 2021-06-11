@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="row">
+      <!--
       <stats-card class="col" @click="marca = '%'">
         <div class="icon-big text-center" slot="header">
           <img src="https://image.flaticon.com/icons/png/512/58/58477.png" />
@@ -19,7 +20,7 @@
         </div>
 
         <div class="icon-big text-center" slot="content">
-          <a class="nav-link active">Vogue</a>
+          <a class="nav-link active">Ray-Ban</a>
         </div>
       </stats-card>
 
@@ -45,7 +46,21 @@
         <div class="icon-big text-center" slot="content">
           <a class="nav-link active">Oakley</a>
         </div>
-      </stats-card>
+      </stats-card>-->
+      <b-navbar toggleable="md" type="dark" variant="dark">
+        <b-navbar-brand class="text-white">Marcas</b-navbar-brand>
+
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav>
+            <a class="nav-link active" @click="marca = '%'">Todas</a>
+            <a class="nav-link" @click="marca = 'ray-ban%'">Ray-Ban</a>
+            <a class="nav-link" @click="marca = 'vogue%'">Vogue</a>
+            <a class="nav-link" @click="marca = 'oakley%'">Oakley</a>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-navbar>
     </div>
 
     <div class="list-of-productos">
