@@ -42,6 +42,25 @@ const apolloProvider = new VueApollo({
 });
 //fin conexion hasura
 
+//inicio auth0
+
+import { domain, clientId } from "../auth_config.json";
+import { Auth0Plugin } from "./auth";
+Vue.use(Auth0Plugin, {
+  domain,
+  clientId,
+  onRedirectCallback: appState => {
+    router.push(
+      appState && appState.targetUrl
+        ? appState.targetUrl
+        : window.location.pathname
+    );
+  }
+});
+
+Vue.config.productionTip = false
+
+//fin auth0
 Vue.use(PaperDashboard);
 
 // Make BootstrapVue available throughout your project

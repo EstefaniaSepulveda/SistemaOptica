@@ -1,52 +1,6 @@
 <template>
   <div>
     <div class="row">
-      <!--
-      <stats-card class="col" @click="marca = '%'">
-        <div class="icon-big text-center" slot="header">
-          <img src="https://image.flaticon.com/icons/png/512/58/58477.png" />
-        </div>
-
-        <div class="icon-big text-center" slot="content">
-          <a class="nav-link active">Todas</a>
-        </div>
-      </stats-card>
-
-      <stats-card class="col" @click="marca = 'ray-ban%'">
-        <div class="icon-big text-center" slot="header">
-          <img
-            src="https://1000marcas.net/wp-content/uploads/2020/03/Ray-Ban-logo-tumb.jpg"
-          />
-        </div>
-
-        <div class="icon-big text-center" slot="content">
-          <a class="nav-link active">Ray-Ban</a>
-        </div>
-      </stats-card>
-
-      <stats-card class="col" @click="marca = 'vogue%'">
-        <div class="icon-big text-center" slot="header">
-          <img
-            src="https://1000marcas.net/wp-content/uploads/2020/03/Ray-Ban-logo-tumb.jpg"
-          />
-        </div>
-
-        <div class="icon-big text-center" slot="content">
-          <a class="nav-link active">Vogue</a>
-        </div>
-      </stats-card>
-
-      <stats-card class="col" @click="marca = 'oakley%'">
-        <div class="icon-big text-center" slot="header">
-          <img
-            src="https://1000marcas.net/wp-content/uploads/2020/03/Ray-Ban-logo-tumb.jpg"
-          />
-        </div>
-
-        <div class="icon-big text-center" slot="content">
-          <a class="nav-link active">Oakley</a>
-        </div>
-      </stats-card>-->
       <b-navbar toggleable="md" type="dark" variant="dark">
         <b-navbar-brand class="text-white">Marcas</b-navbar-brand>
 
