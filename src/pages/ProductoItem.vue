@@ -14,17 +14,16 @@
         </div>
       </div>
       <div>
-        <!--AQUI QUIERO EL MODAL-->
+        <!--AQUI MODAL-->
         <div>
           <b-button @click="showModal = !showModal"
             >Seleccionar Cristal</b-button
           >
 
-            <b-modal size="xl" v-model="showModal" id="modal-1">
+          <b-modal size="xl" v-model="showModal" id="modal-1">
             <cristales></cristales>
 
             <b-button @click="toggleModal">Carro</b-button>
-            
           </b-modal>
         </div>
       </div>
@@ -46,10 +45,9 @@ export default {
   data() {
     return {
       showModal: false,
-      toggleModal: false
+      toggleModal: false,
     };
   },
-  
 };
 </script>
 

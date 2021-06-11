@@ -48,14 +48,8 @@ export default {
     hideSidebar() {
       this.$sidebar.displaySidebar(false);
     },
-    login(){
-      this.$auth.loginWithRedirect();
-    },
-    logout(){
-      this.$auth.logout({
-        returnTo: window.location.origin
-      });
-    }
+   
+    
   }
 };
 </script>

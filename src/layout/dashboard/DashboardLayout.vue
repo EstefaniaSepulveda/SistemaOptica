@@ -2,16 +2,13 @@
   <div class="wrapper">
     <side-bar>
       <template slot="links">
-        
-        <sidebar-link
-          to="/armazonAcetato"
-          name="Armazones"
-          icon="ti-eye"
-        />
+        <sidebar-link to="/armazonAcetato" name="Armazones" icon="ti-eye" />
         <sidebar-link to="/registro" name="Registro" icon="ti-user" />
-        <sidebar-link to="/carroCompra" name="Carro" icon="ti-eye"/>
-        <sidebar-link to="/register" name="Register" icon="ti-eye"/>
-       <!--<sidebar-link to="/cristales" name="Cristal" icon="ti-eye"/>
+        <sidebar-link to="/carroCompra" name="Carro" icon="ti-eye" />
+
+        
+
+        <!--<sidebar-link to="/cristales" name="Cristal" icon="ti-eye"/>
        
         <sidebar-link to="/login" name="Login" icon="ti-eye"/>
         <sidebar-link to="/register" name="Register" icon="ti-eye"/>

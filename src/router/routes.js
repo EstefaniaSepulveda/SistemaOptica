@@ -8,7 +8,7 @@ import Router from "vue-router";
 
 import Home from "@/pages/Home.vue";
 
-
+import { authGuard } from "../auth/index";
 
 import Registro from "@/pages/Registro.vue";
 import ArmazonAcetato from "@/pages/ProductoList.vue";
@@ -26,23 +26,26 @@ const routes = [
       {
         path: "home",
         name: "Home",
-        component: Home
+        component: Home,
       },
      
       {
         path: "carroCompra",
         name: "Carro",
-        component: CarroCompra
+        component: CarroCompra,
+        beforeEnter: authGuard
       },
       {
         path: "cristales",
         name: "Cristales",
-        component: Cristales
+        component: Cristales,
+        beforeEnter: authGuard
       },
       {
         path: "armazonMetal",
         name: "armazones de metal",
-        component: ArmazonMetal
+        component: ArmazonMetal,
+        beforeEnter: authGuard
       },
       {
         path: "registro",

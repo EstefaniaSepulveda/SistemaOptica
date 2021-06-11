@@ -58,8 +58,6 @@ Vue.use(Auth0Plugin, {
   }
 });
 
-Vue.config.productionTip = false
-
 //fin auth0
 Vue.use(PaperDashboard);
 
@@ -69,8 +67,6 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
 // start app
-
-
 
 new Vue({
   el: '#app',
