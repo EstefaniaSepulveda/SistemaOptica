@@ -4,47 +4,33 @@
       <div class="divcont">
         <h3>Registro</h3>
         <form @submit.prevent="submit">
-          
-            <input
-              type="text"
-              placeholder="Nombre"
-              v-model="nombre"
-            />
+          <input type="text" placeholder="Nombre*" v-model="nombre" />
 
-            <input
-              type="text"
-              
-              placeholder="Apellido Paterno"
-              v-model="apellidoP"
-            />
-            <input
-              type="text"
-              
-              placeholder="Apellido Materno"
-              v-model="apellidoM"
-            />
-            <input
-              type="text"
-              
-              placeholder="Run"
-              v-model="run"
-            />
-            <input
-              type="email"
-              :class="{ error: validarCorreo }"
-              placeholder="Correo Electronico"
-              v-model="correo"
-            />
-            <input type="text" placeholder="912345678" v-model="telefono" />
-            <input
-              type="password"
-              :class="{ error: validarContraseña }"
-              placeholder="Contraseña"
-              v-model="contrasena"
-            />
-        
-          <input class="button-primary" type="submit" value="Aceptar" />
-          
+          <input
+            type="text"
+            placeholder="Apellido Paterno*"
+            v-model="apellidoP"
+          />
+          <input
+            type="text"
+            placeholder="Apellido Materno*"
+            v-model="apellidoM"
+          />
+          <input type="text" placeholder="Run*" v-model="run" />
+          <input
+            type="email"
+            :class="{ error: validarCorreo }"
+            placeholder="Correo Electronico*"
+            v-model="correo"
+          />
+          <input type="text" placeholder="912345678*" v-model="telefono" />
+          <input
+            type="password"
+            placeholder="Contraseña*"
+            v-model="contrasena"
+          />
+          <a href="#/Login">Iniciar Sesión</a>
+          <input class="button-primary" type="submit" value="Aceptar"/>
         </form>
       </div>
     </div>
@@ -123,15 +109,26 @@ export default {
           console.log(insert_cliente);
         },
       });
-      this.nombre = "";
-      this.run = "";
-      this.apellidoP = "";
-      this.apellidoM = "";
-      this.correo = "";
-      this.contrasena = "";
-      this.telefono = "";
-
-      alert("Cliente creado");
+      if (
+        this.nombre != "" &&
+        this.run != "" &&
+        this.apellidoP != " " &&
+        this.apellidoM != "" &&
+        this.correo != "" &&
+        this.contrasena != "" &&
+        this.telefono != ""
+      ) {
+        alert("Cliente Creado");
+        this.nombre = "";
+        this.run = "";
+        this.apellidoP = "";
+        this.apellidoM = "";
+        this.correo = "";
+        this.contrasena = "";
+        this.telefono = "";
+      } else {
+        alert("Todos los campos deben estar llenados");
+      }
     },
   },
   computed: {
@@ -145,15 +142,7 @@ export default {
         return true;
       }
     },
-    validarContraseña() {
-      var exp = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/;
-      if (exp.test(this.contraseña)) {
-        return false;
-      } else {
-        return true;
-      }
-    },
-
+    
   },
 };
 </script>
@@ -207,4 +196,5 @@ body {
   width: 100%;
   margin-bottom: 15px;
 }
+
 </style>

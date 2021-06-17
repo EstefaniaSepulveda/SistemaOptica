@@ -41,8 +41,6 @@ import { PaperTable } from "@/components";
 import gql from "graphql-tag";
 import { InMemoryCache } from "apollo-cache-inmemory";
 
-
-
 const tableColumns = ["Nombre", "Detalle", "Valor"];
 
 const GET_CRISTAL = gql`
@@ -104,7 +102,7 @@ export default {
   border-color: #229863;
 }
 
-.btn-success:hover{
+.btn-success:hover {
   background-color: #1c8053;
   border-color: #1c8053;
 }
