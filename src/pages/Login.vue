@@ -33,24 +33,20 @@ query getCliente($correo: String!, $contrasena: String!) {
   }
 }
 `;
-export default{
-name: "Login",
-data(){
-  return{
-    correo:"",
-    contrasena:"",
-  };
-},
-apollo: {},
-methods: {
-  submit(){
-    if (GET_CLIENTE != []){
-      return true;
-    }else{
-      return false;
-    }
-  }
-}
+export default {
+  name: "Login",
+  data() {
+    return {
+      clientes: [],
+      cliente: {},
+    };
+  },
+  apollo: {
+    clientes: {
+      query: GET_CLIENTE,
+      update: (data) => data.cristal,
+    },
+  },
 };
 </script>-->
 

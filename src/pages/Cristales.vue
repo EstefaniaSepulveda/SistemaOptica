@@ -16,17 +16,9 @@
               </td>
               <td>${{ row.valorCristal }}</td>
               <td>
-                <p-button type="success" icon @click.native="handleEdit(row)">
+                <p-button class="agregarCarrito" type="success" icon @click="agregarCarrito(row)">
                   <i class="ti ti-check"></i>
-                </p-button>
-                <p-button
-                  style="margin-left: 5px"
-                  type="danger"
-                  icon
-                  @click.native="handleDelete(row)"
-                >
-                  <i class="ti ti-close"></i>
-                </p-button>
+                </p-button>    
               </td>
             </template>
           </paper-table>

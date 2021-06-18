@@ -1,14 +1,10 @@
 import DashboardLayout from "@/layout/dashboard/DashboardLayout.vue";
 // GeneralViews
 import NotFound from "@/pages/NotFoundPage.vue";
-
-import Vue from "vue";
 import Router from "vue-router";
-
 
 import Home from "@/pages/Home.vue";
 
-import { authGuard } from "../auth/index";
 import Login from "@/pages/Login";
 import Registro from "@/pages/Registro.vue";
 import ArmazonAcetato from "@/pages/ProductoList.vue";
@@ -23,16 +19,17 @@ const routes = [
     component: DashboardLayout,
     redirect: "/Home",
     children: [
+      
       {
         path: "home",
         name: "Home",
         component: Home,
       },
-     {
-      path: "login",
-      name: "Login",
-      component: Login,
-     },
+      {
+        path: "login",
+        name: "Login",
+        component: Login,
+      },
       {
         path: "carroCompra",
         name: "Carro",
@@ -47,7 +44,7 @@ const routes = [
         path: "armazonMetal",
         name: "armazones de metal",
         component: ArmazonMetal,
-        
+
       },
       {
         path: "registro",
