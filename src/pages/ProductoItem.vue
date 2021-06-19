@@ -5,6 +5,7 @@
         <img class="imagen" :src="armazon.imagen" />
       </div>
       <div>
+        
         <div class="datos text-center">
           <h1>Valor: ${{ armazon.valor }}</h1>
           <p>Color: {{ armazon.color }}</p>
@@ -22,9 +23,11 @@
 
           <b-modal size="xl" v-model="showModal" id="modal-1">
             <cristales></cristales>
-
-            <b-button @click="toggleModal">Carro</b-button>
           </b-modal>
+          <b-button @click="agregarCarrito()"
+          class="agregarCarrito" variant="primary">
+            Añadir al Carrito
+          </b-button>
         </div>
       </div>
     </card>

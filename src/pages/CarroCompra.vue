@@ -23,14 +23,12 @@
       </card>
     </div>-->
     
-        <FilePond allowMultiple="true"/>
+        
       
   </div>
 </template>
 
 <script>
-import vueFilePond from 'vue-filepond';
-import 'filepond/dist/filepond.min.css';
 import { PaperTable } from "@/components";
 const tableColumns = ["Id", "Nombre", "Valor"];
 const tableData = [];
@@ -38,7 +36,6 @@ const tableData = [];
 export default {
   components: {
     PaperTable,
-    FilePond: vueFilePond(),
   },
   data() {
     return {

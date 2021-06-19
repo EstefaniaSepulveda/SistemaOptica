@@ -2,6 +2,9 @@ import Vue from "vue";
 import App from "./App";
 import router from "./router/index";
 
+import store from './store'
+
+
 import PaperDashboard from "./plugins/paperDashboard";
 import "vue-notifyjs/themes/default.css";
 
@@ -57,21 +60,11 @@ const apolloProvider = new VueApollo({
 
 //inicio auth0
 
-import { domain, clientId } from "../auth_config.json";
-import { Auth0Plugin } from "./auth";
-Vue.use(Auth0Plugin, {
-  domain,
-  clientId,
-  onRedirectCallback: appState => {
-    router.push(
-      appState && appState.targetUrl
-        ? appState.targetUrl
-        : window.location.pathname
-    );
-  }
-});
+
+
 
 //fin auth0
+
 Vue.use(PaperDashboard);
 
 // Make BootstrapVue available throughout your project
@@ -83,10 +76,12 @@ Vue.use(IconsPlugin)
 
 new Vue({
   el: '#app',
+  store,
   data: {
     showModal: false
   },
   router,
   apolloProvider,
+
   render: h => h(App)
 }).$mount("#app");
