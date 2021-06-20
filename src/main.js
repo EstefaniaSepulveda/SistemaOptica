@@ -3,8 +3,11 @@ import App from "./App";
 import router from "./router/index";
 
 import store from './store'
-
-
+//notify
+import VueNotify from 'vue-notifyjs'
+import 'vue-notifyjs/themes/default.css'
+Vue.use(VueNotify)
+//Fin notify
 import PaperDashboard from "./plugins/paperDashboard";
 import "vue-notifyjs/themes/default.css";
 

@@ -1,30 +1,36 @@
 <template>
-  <div class="row">
-    <!--<div class="col-12">
-      <card>
-        <div v-for="armazon in cart" :key="armazon.id">
-          <div slot="raw-content" class="table-responsive">
-            <paper-table :data="table.data" :columns="table.columns">
-            </paper-table>
-
-            <a
-              href="#"
-              class="badge badge-danger"
-              @click.prevent="eliminarProducto(armazon, cristal)"
-            >
-              Eliminar</a
-            >
-          </div>
+  <div
+    class="dropdown-menu p-2"
+    style="min-width: 320px; right: 0; left: auto"
+    aria-labelledby="triggerId"
+  >
+    <div v-for="armazon in cart" :key="armazon.idArmazon">
+      <div class="px-2 d-flex justify-content-between">
+        <div>
+          <strong>{{ armazon.nombreMarca }}</strong>
+          <br />
+          ${{ armazon.valor }}
         </div>
-
-        <div class="d-flex justify-content-between">
-          <button @click.prevent="aceptarCarro()">Realizar Pedido</button>
+        <div>
+          <a
+            href="#"
+            class="badge badge-secondary"
+            @click.prevent="removerArmazonDelCarro(armazon)"
+            >Eliminar</a
+          >
         </div>
-      </card>
-    </div>-->
-    
-        
-      
+      </div>
+      <hr />
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <!--<span>Total: ${{ cartTotalPrice }}</span>-->
+      <a href="#" @click.prevent="limpiarCarro()">Limpiar carro</a>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <button @click.prevent="acceptCart()">Realizar Pedido</button>
+    </div>
   </div>
 </template>
 

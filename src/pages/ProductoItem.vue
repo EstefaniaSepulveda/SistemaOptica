@@ -5,7 +5,6 @@
         <img class="imagen" :src="armazon.imagen" />
       </div>
       <div>
-        
         <div class="datos text-center">
           <h1>Valor: ${{ armazon.valor }}</h1>
           <p>Color: {{ armazon.color }}</p>
@@ -24,8 +23,11 @@
           <b-modal size="xl" v-model="showModal" id="modal-1">
             <cristales></cristales>
           </b-modal>
-          <b-button @click="agregarCarrito()"
-          class="agregarCarrito" variant="primary">
+          <b-button
+            @click="agregarCarrito()"
+            class="agregarCarrito"
+            variant="primary"
+          >
             Añadir al Carrito
           </b-button>
         </div>
@@ -49,7 +51,30 @@ export default {
     return {
       showModal: false,
       toggleModal: false,
+      type: ["success"],
+      notifications: {
+        topCenter: false,
+      },
+
     };
+  },
+  methods: {
+    notifyVue(verticalAlign, horizontalAlign) {
+      const color = Math.floor(Math.random() * 4 + 1);
+      this.$notify({
+        message: "Enviado al carro de compra",
+        horizontalAlign: horizontalAlign,
+        verticalAlign: verticalAlign,
+        type: this.type[color],
+      });
+    },
+
+    agregarCarrito() {
+      this.armazon = { ...this.armazon };
+      this.$store.commit("setCurrentArmazon", this.armazon);
+
+      this.notifyVue("top", "right");
+    },
   },
 };
 </script>
