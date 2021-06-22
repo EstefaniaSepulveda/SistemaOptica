@@ -2,7 +2,7 @@
   <div class="wrapper">
     <side-bar>
       <template slot="links">
-        <sidebar-link to="/armazonAcetato" name="Armazones" icon="ti-eye" />
+        
         <sidebar-link to="/login" name="Login" icon="ti-user" />
         <sidebar-link to="/carroCompra" name="Carro" icon="ti-eye" />
         

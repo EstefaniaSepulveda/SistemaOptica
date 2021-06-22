@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import router from "../router";
 import gql from "graphql-tag";
 import { InMemoryCache } from "apollo-cache-inmemory";
 const ADD_CLIENTE = gql`
@@ -126,10 +127,12 @@ export default {
         this.correo = "";
         this.contrasena = "";
         this.telefono = "";
+        router.push({ name: "Login" });
       } else {
         alert("Todos los campos deben estar llenados");
       }
     },
+
   },
   computed: {
     validarCorreo() {

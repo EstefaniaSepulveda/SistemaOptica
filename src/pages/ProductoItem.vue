@@ -23,6 +23,7 @@
           <b-modal size="xl" v-model="showModal" id="modal-1">
             <cristales></cristales>
           </b-modal>
+          
           <b-button
             @click="agregarCarrito()"
             class="agregarCarrito"
@@ -55,7 +56,6 @@ export default {
       notifications: {
         topCenter: false,
       },
-
     };
   },
   methods: {

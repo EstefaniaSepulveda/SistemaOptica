@@ -16,39 +16,62 @@
             v-model="contrasena"
           />
           <a href="#/Registro">Registrar</a>
-          <input class="button-primary" type="submit" value="Iniciar Sesión" />
+          <button @click.prevent="login()">Aceptar</button>
         </form>
       </div>
     </div>
   </div>
 </template>
 
-<!--<script>
+<script>
+import router from "../router";
 import gql from "graphql-tag";
-import { InMemoryCache } from "apollo-cache-inmemory";
-const GET_CLIENTE = qgl`
-query getCliente($correo: String!, $contrasena: String!) {
-  cliente(where: {correo: {_eq: $correo}, contrasena: {_eq: $contrasena}}) {
-    idCliente
+const GET_CLIENTE = gql`
+  query getCliente($correo: String!, $contrasena: String!) {
+    cliente(
+      where: { correo: { _eq: $correo }, contrasena: { _eq: $contrasena } }
+    ) {
+      contrasena
+      correo
+    }
   }
-}
 `;
 export default {
   name: "Login",
   data() {
     return {
-      clientes: [],
-      cliente: {},
+      correo: "",
+      contrasena: "",
     };
   },
-  apollo: {
-    clientes: {
-      query: GET_CLIENTE,
-      update: (data) => data.cristal,
+  apollo: {},
+
+  methods: {
+    login() {
+      const { contrasena, correo } = this.$data;
+      this.$apollo.query({
+        query: GET_CLIENTE,
+        variables: {
+          contrasena,
+          correo,
+        },
+        update: (data) => data.cliente,
+      });
+      if (this.correo == "" && this.contrasena == "") {
+        alert("campos vacios");
+      } else {
+        if (correo == "admin" && contrasena == "pass") {
+          router.push({ name: "Stock" });
+        } else {
+          if (correo == this.correo && contrasena == this.contrasena) {
+            router.push({ name: "Productos" });
+          }
+        }
+      }
     },
   },
 };
-</script>-->
+</script>
 
 
 <style scoped>

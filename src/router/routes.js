@@ -11,6 +11,7 @@ import ArmazonAcetato from "@/pages/ProductoList.vue";
 import ArmazonMetal from "@/pages/ProductoItem.vue";
 import Cristales from "@/pages/Cristales.vue";
 import CarroCompra from "@/pages/CarroCompra.vue";
+import Stock from "@/pages2/Stock.vue";
 
 
 const routes = [
@@ -19,11 +20,15 @@ const routes = [
     component: DashboardLayout,
     redirect: "/Home",
     children: [
-      
       {
         path: "home",
         name: "Home",
         component: Home,
+      },
+      {
+        path: "stock",
+        name: "Stock",
+        component: Stock,
       },
       {
         path: "login",

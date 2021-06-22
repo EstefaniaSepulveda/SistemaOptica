@@ -9,6 +9,7 @@
         <div>
           <strong>{{ armazon.nombreMarca }}</strong>
           <br />
+          {{ armazon.color }}
           ${{ armazon.valor }}
         </div>
         <div>
@@ -35,23 +36,36 @@
 </template>
 
 <script>
-import { PaperTable } from "@/components";
-const tableColumns = ["Id", "Nombre", "Valor"];
-const tableData = [];
-
+import router from "../router";
 export default {
-  components: {
-    PaperTable,
-  },
+  name: "CarroCompra",
+
   data() {
-    return {
-      table: {
-        columns: [...tableColumns],
-        data: [...tableData],
-      },
-    };
+    return {};
   },
+
+  computed: {
+    cart() {
+      return this.$store.getters.getcarroCompra;
+    },
+  },
+
+   methods: {
+    removeProduremoverArmazonDelCarroctFromCart(product) {
+      this.$store.dispatch("removeProductFromCart", product);
+    },
+
+    limpiarCarro() {
+      this.$store.dispatch("clearCart");
+    },
+
+    acceptCart() {
+      router.push({ name: "Transferencia" });
+    },
+  },
+
 };
 </script>
+
 <style scoped>
 </style>

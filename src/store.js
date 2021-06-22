@@ -35,18 +35,12 @@ export default new Vuex.Store({
     state.currentArmazon.marca = payload.marca;
     state.currentArmazon.color = payload.color;
 
-    let armazonCarro = state.carroCompra.find(armazon => {
-      return armazon.idArmazon === payload.idArmazon
-    })
     state.carroCompra.push(payload);
   },
 
   setCurrentCristal(state, payload) {
     state.currentCristal.idCristal = payload.idCristal;
 
-    let cristalCarro = state.carroCompra.find(cristal => {
-      return cristal.idCristal === payload.idCristal
-    })
     state.carroCompra.push(payload);
   },
 
