@@ -1,9 +1,8 @@
 <template>
   <div
-    class="dropdown-menu p-2"
-    style="min-width: 320px; right: 0; left: auto"
-    aria-labelledby="triggerId"
+    
   >
+
     <div v-for="armazon in cart" :key="armazon.idArmazon">
       <div class="px-2 d-flex justify-content-between">
         <div>
@@ -50,20 +49,19 @@ export default {
     },
   },
 
-   methods: {
-    removeProduremoverArmazonDelCarroctFromCart(product) {
-      this.$store.dispatch("removeProductFromCart", product);
+  methods: {
+    removerArmazonDelCarro(product) {
+      this.$store.dispatch("removerArmazonDelCarro", product);
     },
 
     limpiarCarro() {
-      this.$store.dispatch("clearCart");
+      this.$store.dispatch("limpiarCarro");
     },
 
     acceptCart() {
       router.push({ name: "Transferencia" });
     },
   },
-
 };
 </script>
 

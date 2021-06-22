@@ -12,7 +12,7 @@ import ArmazonMetal from "@/pages/ProductoItem.vue";
 import Cristales from "@/pages/Cristales.vue";
 import CarroCompra from "@/pages/CarroCompra.vue";
 import Stock from "@/pages2/Stock.vue";
-
+import Transferencia from "@/pages/Transferencia.vue"
 
 const routes = [
   {
@@ -24,6 +24,11 @@ const routes = [
         path: "home",
         name: "Home",
         component: Home,
+      },
+      {
+        path: "transferencia",
+        name: "Transferencia",
+        component: Transferencia,
       },
       {
         path: "stock",
