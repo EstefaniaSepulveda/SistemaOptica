@@ -29,7 +29,7 @@
     </div>
 
     <div class="d-flex justify-content-between">
-      <button @click.prevent="acceptCart()">Realizar Pedido</button>
+      <button @click.prevent="acceptCart()">Subir receta</button>
     </div>
   </div>
 </template>
@@ -59,7 +59,7 @@ export default {
     },
 
     acceptCart() {
-      router.push({ name: "Transferencia" });
+      router.push({ name: "Receta" });
     },
   },
 };

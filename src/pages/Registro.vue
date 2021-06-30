@@ -4,26 +4,26 @@
       <div class="divcont">
         <h3>Registro</h3>
         <form @submit.prevent="submit">
-          <input type="text" placeholder="Nombre*" v-model="nombre" />
+          <input type="text" placeholder="Nombre *" v-model="nombre" />
 
           <input
             type="text"
-            placeholder="Apellido Paterno*"
+            placeholder="Apellido Paterno *"
             v-model="apellidoP"
           />
           <input
             type="text"
-            placeholder="Apellido Materno*"
+            placeholder="Apellido Materno *"
             v-model="apellidoM"
           />
-          <input type="text" placeholder="Run*" v-model="run" />
+          <input type="text" placeholder="Run *" v-model="run" />
           <input
             type="email"
             :class="{ error: validarCorreo }"
-            placeholder="Correo Electronico*"
+            placeholder="Correo Electronico *"
             v-model="correo"
           />
-          <input type="text" placeholder="912345678*" v-model="telefono" />
+          <input type="text" placeholder="912345678 *" v-model="telefono" />
           <input
             type="password"
             placeholder="Contraseña*"

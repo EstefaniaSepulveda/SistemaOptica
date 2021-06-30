@@ -16,6 +16,7 @@
             v-model="contrasena"
           />
           <a href="#/Registro">Registrar</a>
+          <a href="#/Recuperar">Recuperar Contraseña</a>
           <button @click.prevent="login()">Aceptar</button>
         </form>
       </div>

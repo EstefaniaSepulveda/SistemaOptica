@@ -13,6 +13,8 @@ import Cristales from "@/pages/Cristales.vue";
 import CarroCompra from "@/pages/CarroCompra.vue";
 import Stock from "@/pages2/Stock.vue";
 import Transferencia from "@/pages/Transferencia.vue"
+import Receta from "@/pages/Receta.vue"
+import Recuperar from "@/pages/Recuperar.vue"
 
 const routes = [
   {
@@ -21,9 +23,19 @@ const routes = [
     redirect: "/Home",
     children: [
       {
+        path: "recuperar",
+        name: "Recuperar",
+        component: Recuperar,
+      },
+      {
         path: "home",
         name: "Home",
         component: Home,
+      },
+      {
+        path: "receta",
+        name: "Receta",
+        component: Receta,
       },
       {
         path: "transferencia",
