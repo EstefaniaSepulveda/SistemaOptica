@@ -7,14 +7,17 @@ import Home from "@/pages/Home.vue";
 
 import Login from "@/pages/Login";
 import Registro from "@/pages/Registro.vue";
-import ArmazonAcetato from "@/pages/ProductoList.vue";
-import ArmazonMetal from "@/pages/ProductoItem.vue";
-import Cristales from "@/pages/Cristales.vue";
-import CarroCompra from "@/pages/CarroCompra.vue";
+
 import Stock from "@/pages2/Stock.vue";
-import Transferencia from "@/pages/Transferencia.vue"
-import Receta from "@/pages/Receta.vue"
+import Pedido from "@/pages2/Pedido.vue";
+
+import Transferencia from "@/cliente/Transferencia.vue";
 import Recuperar from "@/pages/Recuperar.vue"
+import Receta from "@/cliente/Receta.vue";
+import CarroCompra from "@/cliente/CarroCompra.vue";
+import Cristales from "@/cliente/Cristales.vue";
+import ProductoItem from "@/cliente/ProductoItem.vue";
+import ProductoList from "@/cliente/ProductoList.vue";
 
 const routes = [
   {
@@ -26,6 +29,11 @@ const routes = [
         path: "recuperar",
         name: "Recuperar",
         component: Recuperar,
+      },
+      {
+        path: "pedido",
+        name: "Pedido",
+        component: Pedido,
       },
       {
         path: "home",
@@ -63,9 +71,9 @@ const routes = [
         component: Cristales,
       },
       {
-        path: "armazonMetal",
-        name: "armazones de metal",
-        component: ArmazonMetal,
+        path: "productoItem",
+        name: "productos",
+        component: ProductoItem,
 
       },
       {
@@ -74,11 +82,11 @@ const routes = [
         component: Registro
       },
       {
-        path: "armazonAcetato",
+        path: "productoList",
         name: "Productos",
-        component: ArmazonAcetato
-      },/*
-      {
+        component: ProductoList
+      },
+      /*{
         path: "dashboard",
         name: "dashboard",
         component: Dashboard
@@ -112,7 +120,7 @@ const routes = [
         path: "table-list",
         name: "table-list",
         component: TableList
-      }*/
+      } */
     ]
   },
   { path: "*", component: NotFound }

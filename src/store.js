@@ -11,6 +11,9 @@ export default new Vuex.Store({
       color: '',
     },
 
+    perfil: '',
+    login: false,
+
     currentCristal: {
       idCristal: '',
     },
@@ -18,12 +21,16 @@ export default new Vuex.Store({
     carroCompra: [],
     idCliente: ''
   },
+
   getters: {
     getCurrentProducto: state => state.currentArmazon,
     getCurrentCristal: state => state.currentCristal,
     getcarroCompra: state => state.carroCompra,
     getprecioTotalCarro: state => state.precioTotalCarro,
-    getIdCliente: state => state.idCliente
+    getIdCliente: state => state.idCliente,
+
+    getPerfil: state => state.perfil,
+    getLogin: state => state.login,
   },
 
   setIdClient(state, payload) {
@@ -59,8 +66,19 @@ export default new Vuex.Store({
   limpiarCarro(state) {
     state.carroCompra = [];
   },
+
+  mutations: {
+    setPerfil(state, payload) {
+      state.perfil = payload;
+    },
+
+    setLogin(state, payload) {
+      state.login = payload
+    },
+  },
+
   actions: {
-   
+
     async removerArmazonDelCarro(state, payload) {
       state.commit("removerArmazonDelCarro", payload);
     },
@@ -71,7 +89,17 @@ export default new Vuex.Store({
 
     async limpiarCarro(state) {
       state.commit("limpiarCarro");
-    }
-  }
+    },
+
+    cambiarPerfil({ commit }, perfil) {
+      commit('setPerfil', perfil);
+    },
+
+    cambiarLogin({ commit }, login) {
+      commit('setLogin', login);
+    },
+  },
+
+
 
 })

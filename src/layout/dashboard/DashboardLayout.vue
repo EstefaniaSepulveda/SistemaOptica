@@ -1,25 +1,38 @@
 <template>
   <div class="wrapper">
+    
     <side-bar>
+      
       <template slot="links">
+        <sidebar-link v-if="!login" to="/login" name="Login" icon="ti-user" />
         
-        <sidebar-link to="/login" name="Login" icon="ti-user" />
-        <sidebar-link to="/carroCompra" name="Carro" icon="ti-eye" />
-        
+        <sidebar-link
+          v-if="perfil === 'cliente'"
+          to="/productoList"
+          name="Producto List"
+          icon="ti-eye"
+        />
+        <sidebar-link
+          v-if="perfil === 'cliente'"
+          to="/CarroCompra"
+          name="Carro"
+          icon="ti-eye"
+        />
 
-        <!--<sidebar-link to="/cristales" name="Cristal" icon="ti-eye"/>
-       
-        <sidebar-link to="/login" name="Login" icon="ti-eye"/>
-        <sidebar-link to="/register" name="Register" icon="ti-eye"/>
-        <sidebar-link to="/armazonMetal" name="Armazon Metalico" icon="ti-eye"/>
-        <sidebar-link to="/dashboard" name="Dashboard" icon="ti-eye"/>
-        <sidebar-link to="/stats" name="User Profile" icon="ti-user"/>
-        <sidebar-link to="/table-list" name="Table List" icon="ti-view-list-alt"/>
-        <sidebar-link to="/typography" name="Typography" icon="ti-text"/>
-        <sidebar-link to="/icons" name="Icons" icon="ti-pencil-alt2"/>
-        <sidebar-link to="/maps" name="Map" icon="ti-map"/>
-        <sidebar-link to="/notifications" name="Notifications" icon="ti-bell"/>-->
+        <sidebar-link
+          v-if="perfil === 'admin'"
+          to="/Stock"
+          name="Catálogo"
+          icon="ti-eye"
+        />
+        <sidebar-link
+          v-if="perfil === 'admin'"
+          to="/Pedidos"
+          name="Pedidos"
+          icon="ti-eye"
+        />
       </template>
+      <button v-if="login" @click="logout()" name="Log out">Log out</button>
       <mobile-menu>
         <drop-down
           class="nav-item"
@@ -39,6 +52,7 @@
 
       <content-footer></content-footer>
     </div>
+
   </div>
 </template>
 <style lang="scss">
@@ -50,6 +64,9 @@ import DashboardContent from "./Content.vue";
 import MobileMenu from "./MobileMenu";
 import SideBar from "../../components/SidebarPlugin/SideBar.vue";
 import SidebarLink from "../../components/SidebarPlugin/SidebarLink.vue";
+import { mapGetters, mapActions } from "vuex";
+import Button from '../../components/Button.vue';
+
 export default {
   components: {
     TopNavbar,
@@ -58,13 +75,26 @@ export default {
     MobileMenu,
     SideBar,
     SidebarLink,
+    Button,
   },
   methods: {
+    logout(){
+      this.$store.dispatch('cambiarLogin',false)
+      this.$store.dispatch('cambiarPerfil','')
+    },
     toggleSidebar() {
       if (this.$sidebar.showSidebar) {
         this.$sidebar.displaySidebar(false);
       }
     },
+
+    ...mapActions(["cambiarLogin", "cambiarPerfil"]),
+  },
+  computed: {
+    ...mapGetters({
+      perfil: "getPerfil",
+      login: "getLogin",
+    }),
   },
 };
 </script>

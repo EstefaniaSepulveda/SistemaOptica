@@ -50,8 +50,8 @@ export default {
   },
 
   methods: {
-    removerArmazonDelCarro(product) {
-      this.$store.dispatch("removerArmazonDelCarro", product);
+    removerArmazonDelCarro(producto) {
+      this.$store.dispatch("removerArmazonDelCarro", producto);
     },
 
     limpiarCarro() {

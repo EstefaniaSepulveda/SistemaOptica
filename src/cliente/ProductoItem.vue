@@ -71,7 +71,7 @@ export default {
 
     agregarCarrito() {
       this.armazon = { ...this.armazon };
-      this.$store.commit("setCurrentArmazon", this.armazon);
+      this.$store.commit("setCurrentProducto", this.producto);
 
       this.notifyVue("top", "right");
     },

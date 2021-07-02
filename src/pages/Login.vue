@@ -27,6 +27,7 @@
 <script>
 import router from "../router";
 import gql from "graphql-tag";
+import { mapActions } from "vuex";
 const GET_CLIENTE = gql`
   query getCliente($correo: String!, $contrasena: String!) {
     cliente(
@@ -48,6 +49,8 @@ export default {
   apollo: {},
 
   methods: {
+    ...mapActions(["cambiarLogin", "cambiarPerfil"]),
+
     login() {
       const { contrasena, correo } = this.$data;
       this.$apollo.query({
@@ -58,14 +61,21 @@ export default {
         },
         update: (data) => data.cliente,
       });
+
       if (this.correo == "" && this.contrasena == "") {
         alert("campos vacios");
       } else {
         if (correo == "admin" && contrasena == "pass") {
+          this.$store.dispatch("cambiarLogin", true);
+          this.$store.dispatch("cambiarPerfil", "admin");
           router.push({ name: "Stock" });
+          
         } else {
           if (correo == this.correo && contrasena == this.contrasena) {
+            this.$store.dispatch("cambiarLogin", true);
+            this.$store.dispatch("cambiarPerfil", "cliente");
             router.push({ name: "Productos" });
+            
           }
         }
       }
