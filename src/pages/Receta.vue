@@ -1,5 +1,31 @@
 <template>
   <div class="divLogin">
+    <b-container class="bv-example-row">
+      <b-row>
+        <b-col />
+        <b-col />
+        <b-col />
+        <b-col />
+        <b-col />
+        <b-col />
+        <b-col />
+        <b-col />
+        <b-col
+          ><b-button
+            style="
+              background-color: transparent;
+              border-color: black;
+              color: black;
+            "
+            v-if="perfil === 'cliente' || perfil === 'admin'"
+            @click="logout()"
+            name="Log out"
+            >Log out</b-button
+          ></b-col
+        >
+      </b-row>
+    </b-container>
+
     <div class="container">
       <div class="divcont">
         <h3>Datos Receta Médica</h3>
@@ -68,6 +94,7 @@
 
 
 <script>
+import { mapGetters } from "vuex";
 import router from "../router";
 import gql from "graphql-tag";
 import { InMemoryCache } from "apollo-cache-inmemory";
@@ -129,8 +156,18 @@ export default {
       observaciones: "",
     };
   },
+  computed: {
+    ...mapGetters({
+      perfil: "getPerfil",
+    }),
+  },
   apollo: {},
   methods: {
+    logout() {
+      this.$store.dispatch("cambiarLogin", false);
+      this.$store.dispatch("cambiarPerfil", "");
+      this.$router.push({ path: "Home" });
+    },
     submit() {
       const {
         adicionOD,
@@ -168,7 +205,7 @@ export default {
           console.log(insert_receta);
         },
       });
-      alert("Receta Actualizada")
+      alert("Receta Actualizada");
       router.push({ name: "Transferencia" });
     },
   },

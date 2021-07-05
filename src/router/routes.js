@@ -1,23 +1,22 @@
 import DashboardLayout from "@/layout/dashboard/DashboardLayout.vue";
-// GeneralViews
-import NotFound from "@/pages/NotFoundPage.vue";
 import Router from "vue-router";
 
+//inicio
 import Home from "@/pages/Home.vue";
-
 import Login from "@/pages/Login";
 import Registro from "@/pages/Registro.vue";
-
-import Stock from "@/pages2/Stock.vue";
-import Pedido from "@/pages2/Pedido.vue";
-
-import Transferencia from "@/cliente/Transferencia.vue";
+import NotFound from "@/pages/NotFoundPage.vue";
 import Recuperar from "@/pages/Recuperar.vue"
-import Receta from "@/cliente/Receta.vue";
-import CarroCompra from "@/cliente/CarroCompra.vue";
-import Cristales from "@/cliente/Cristales.vue";
-import ProductoItem from "@/cliente/ProductoItem.vue";
-import ProductoList from "@/cliente/ProductoList.vue";
+//admin
+import Stock from "@/pages/Stock.vue";
+import Pedido from "@/pages/Pedido.vue";
+//cliente
+import Transferencia from "@/pages/Transferencia.vue";
+import Receta from "@/pages/Receta.vue";
+import CarroCompra from "@/pages/CarroCompra.vue";
+import Cristales from "@/pages/Cristales.vue";
+import ProductoItem from "@/pages/ProductoItem.vue";
+import ProductoList from "@/pages/ProductoList.vue";
 
 const routes = [
   {
@@ -26,101 +25,66 @@ const routes = [
     redirect: "/Home",
     children: [
       {
-        path: "recuperar",
+        path: "Recuperar",
         name: "Recuperar",
         component: Recuperar,
       },
       {
-        path: "pedido",
+        path: "Pedido",
         name: "Pedido",
         component: Pedido,
       },
       {
-        path: "home",
+        path: "Home",
         name: "Home",
         component: Home,
       },
       {
-        path: "receta",
+        path: "Receta",
         name: "Receta",
         component: Receta,
       },
       {
-        path: "transferencia",
+        path: "Transferencia",
         name: "Transferencia",
         component: Transferencia,
       },
       {
-        path: "stock",
+        path: "Stock",
         name: "Stock",
         component: Stock,
       },
       {
-        path: "login",
+        path: "Login",
         name: "Login",
         component: Login,
       },
       {
-        path: "carroCompra",
+        path: "CarroCompra",
         name: "Carro",
         component: CarroCompra,
       },
       {
-        path: "cristales",
+        path: "Cristales",
         name: "Cristales",
         component: Cristales,
       },
       {
-        path: "productoItem",
-        name: "productos",
+        path: "ProductoItem",
+        name: "ProductosItem",
         component: ProductoItem,
 
       },
       {
-        path: "registro",
-        name: "registro",
+        path: "Registro",
+        name: "Registro",
         component: Registro
       },
       {
-        path: "productoList",
+        path: "ProductoList",
         name: "Productos",
         component: ProductoList
       },
-      /*{
-        path: "dashboard",
-        name: "dashboard",
-        component: Dashboard
-      },
-      {
-        path: "stats",
-        name: "stats",
-        component: UserProfile
-      },
-      {
-        path: "notifications",
-        name: "notifications",
-        component: Notifications
-      },
-      {
-        path: "icons",
-        name: "icons",
-        component: Icons
-      },
-      {
-        path: "maps",
-        name: "maps",
-        component: Maps
-      },
-      {
-        path: "typography",
-        name: "typography",
-        component: Typography
-      },
-      {
-        path: "table-list",
-        name: "table-list",
-        component: TableList
-      } */
     ]
   },
   { path: "*", component: NotFound }

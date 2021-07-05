@@ -199,5 +199,8 @@ body {
   width: 100%;
   margin-bottom: 15px;
 }
-
+a:hover, a:focus {
+    color: #fff;
+   
+}
 </style>

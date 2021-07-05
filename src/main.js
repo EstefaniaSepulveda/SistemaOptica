@@ -12,18 +12,7 @@ import PaperDashboard from "./plugins/paperDashboard";
 import "vue-notifyjs/themes/default.css";
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-//firebase
-import firebase from 'firebase'
 
-firebase.initializeApp({
-  apiKey: "AIzaSyC2kmRRBNLqQG_qCjZs0dEGK71470SBc5Y",
-  authDomain: "vue-upload-115b5.firebaseapp.com",
-  projectId: "vue-upload-115b5",
-  storageBucket: "vue-upload-115b5.appspot.com",
-  messagingSenderId: "1055194448438",
-  appId: "1:1055194448438:web:a12de309a92dea1f394e97"
-})
-//fin firebase
 
 //conexion a hasura
 Vue.config.productionTip = false;

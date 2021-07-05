@@ -15,8 +15,8 @@
             placeholder="Contraseña*"
             v-model="contrasena"
           />
-          <a href="#/Registro">Registrar</a>
-          <a href="#/Recuperar">Recuperar Contraseña</a>
+          <a href="#/Registro">¿No tiene Cuenta?, Regístrate</a>
+          <br />
           <button @click.prevent="login()">Aceptar</button>
         </form>
       </div>
@@ -68,14 +68,12 @@ export default {
         if (correo == "admin" && contrasena == "pass") {
           this.$store.dispatch("cambiarLogin", true);
           this.$store.dispatch("cambiarPerfil", "admin");
-          router.push({ name: "Stock" });
-          
+          router.push({ path: "Stock" });
         } else {
           if (correo == this.correo && contrasena == this.contrasena) {
             this.$store.dispatch("cambiarLogin", true);
             this.$store.dispatch("cambiarPerfil", "cliente");
-            router.push({ name: "Productos" });
-            
+            router.push({ path: "ProductoList" });
           }
         }
       }
@@ -133,5 +131,9 @@ body {
   border-radius: 5px;
   width: 100%;
   margin-bottom: 15px;
+}
+a:hover,
+a:focus {
+  color: #fff;
 }
 </style>

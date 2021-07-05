@@ -5,66 +5,36 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    currentArmazon: {
+
+    perfil: '',
+    login: false,
+
+    armazonActual: {
       idArmazon: '',
       marca: '',
       color: '',
     },
 
-    perfil: '',
-    login: false,
-
-    currentCristal: {
+    cristalActual: {
       idCristal: '',
     },
 
     carroCompra: [],
+    idCliente: '',
+
+    precioTotalCarro: 0,
     idCliente: ''
   },
 
   getters: {
-    getCurrentProducto: state => state.currentArmazon,
-    getCurrentCristal: state => state.currentCristal,
-    getcarroCompra: state => state.carroCompra,
-    getprecioTotalCarro: state => state.precioTotalCarro,
+    getArmazonActual: state => state.armazonActual,
+    getCristalActual: state => state.cristalActual,
+    getCarroCompra: state => state.carroCompra,
+    getPrecioTotalCarro: state => state.precioTotalCarro,
     getIdCliente: state => state.idCliente,
 
     getPerfil: state => state.perfil,
     getLogin: state => state.login,
-  },
-
-  setIdClient(state, payload) {
-    state.idCliente = payload;
-  },
-
-  setCurrentArmazon(state, payload) {
-    state.currentArmazon.idArmazon = payload.idArmazon;
-    state.currentArmazon.marca = payload.marca;
-    state.currentArmazon.color = payload.color;
-
-    state.carroCompra.push(payload);
-  },
-
-  setCurrentCristal(state, payload) {
-    state.currentCristal.idCristal = payload.idCristal;
-
-    state.carroCompra.push(payload);
-  },
-
-  removerArmazonDelCarro(state, payload) {
-    state.carroCompra = state.carroCompra.filter(armazon => {
-      return armazon.idArmazon !== payload.idArmazon;
-    })
-  },
-
-  removerCristalDelCarro(state, payload) {
-    state.carroCompra = state.carroCompra.filter(cristal => {
-      return cristal.idCristal !== payload.idCristal;
-    })
-  },
-
-  limpiarCarro(state) {
-    state.carroCompra = [];
   },
 
   mutations: {
@@ -75,9 +45,60 @@ export default new Vuex.Store({
     setLogin(state, payload) {
       state.login = payload
     },
+
+    setPrecioTotalCarro(state, payload) {
+      state.precioTotalCarro += payload;
+    },
+
+    setIdCliente(state, payload) {
+      state.idCliente = payload;
+    },
+
+    setArmazonActual(state, payload) {
+      state.armazonActual.idArmazon = payload.idArmazon;
+      state.armazonActual.marca = payload.marca;
+      state.armazonActual.color = payload.color;
+      let armazonCarro = state.carroCompra.find(armazon => {
+        return armazon.idArmazon === payload.idArmazon
+      })
+      if (armazonCarro) {
+        state.carroCompra.push(payload);
+      }
+    },
+
+    setCristalActual(state, payload) {
+      state.cristalActual.idCristal = payload.idCristal;
+      let cristalCarro = state.CarroCompra.find(cristal => {
+        return cristal.idCristal === payload.idCristal
+      })
+      if (cristalCarro) {
+        state.carroCompra.push(payload);
+      }
+    },
+
+    removerArmazonDelCarro(state, payload) {
+      state.carroCompra = state.carroCompra.filter(armazon => {
+        return armazon.idArmazon !== payload.idArmazon;
+      })
+    },
+
+    removerCristalDelCarro(state, payload) {
+      state.carroCompra = state.carroCompra.filter(cristal => {
+        return cristal.idCristal !== payload.idCristal;
+      })
+    },
+
+    limpiarCarro(state) {
+      state.carroCompra = [];
+      precioTotalCarro = 0;
+    },
   },
 
   actions: {
+
+    async precioTotalCarro({commit}, precioTotalCarro) {
+      commit("setPrecioTotalCarro", precioTotalCarro)
+    },
 
     async removerArmazonDelCarro(state, payload) {
       state.commit("removerArmazonDelCarro", payload);

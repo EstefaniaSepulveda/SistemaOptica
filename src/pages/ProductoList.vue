@@ -1,5 +1,31 @@
 <template>
   <div>
+    <b-container class="bv-example-row">
+      <b-row>
+        <b-col />
+        <b-col />
+        <b-col />
+        <b-col />
+        <b-col />
+        <b-col />
+        <b-col />
+        <b-col />
+        <b-col
+          ><b-button
+            style="
+              background-color: transparent;
+              border-color: black;
+              color: black;
+            "
+            v-if="perfil === 'cliente' || perfil === 'admin'"
+            @click="logout()"
+            name="Log out"
+            >Log out</b-button
+          ></b-col
+        >
+      </b-row>
+    </b-container>
+
     <div class="row">
       <b-navbar toggleable="md" type="dark" variant="dark">
         <b-navbar-brand class="text-white">Marcas</b-navbar-brand>
@@ -32,8 +58,7 @@
 import { Card, StatsCard } from "@/components";
 
 import ProductoItem from "./ProductoItem";
-
-
+import { mapGetters } from "vuex";
 import gql from "graphql-tag";
 const GET_ARMAZON = gql`
   query getArmazon($marca: String!) {
@@ -59,6 +84,18 @@ export default {
       armazones: [],
       marca: "%",
     };
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("cambiarLogin", false);
+      this.$store.dispatch("cambiarPerfil", "");
+      this.$router.push({ path: "Home" });
+    },
+  },
+  computed: {
+    ...mapGetters({
+      perfil: "getPerfil",
+    }),
   },
 
   apollo: {

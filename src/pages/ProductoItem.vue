@@ -16,15 +16,16 @@
       <div>
         <!--AQUI MODAL-->
         <div>
-          <b-button @click="showModal = !showModal"
+          <b-button v-if="perfil === 'cliente'" @click="showModal = !showModal"
             >Seleccionar Cristal</b-button
           >
 
           <b-modal size="xl" v-model="showModal" id="modal-1">
             <cristales></cristales>
           </b-modal>
-          
+
           <b-button
+            v-if="perfil === 'cliente'"
             @click="agregarCarrito()"
             class="agregarCarrito"
             variant="primary"
@@ -40,7 +41,7 @@
 <script>
 import { Card } from "@/components";
 import { Button as PButton } from "@/components";
-
+import { mapGetters } from "vuex";
 import Cristales from "./Cristales";
 import carroCompra from "./CarroCompra";
 export default {
@@ -71,10 +72,15 @@ export default {
 
     agregarCarrito() {
       this.armazon = { ...this.armazon };
-      this.$store.commit("setCurrentProducto", this.producto);
+      this.$store.commit("setArmazonActual", this.armazon);
 
       this.notifyVue("top", "right");
     },
+  },
+  computed: {
+    ...mapGetters({
+      perfil: "getPerfil",
+    }),
   },
 };
 </script>
@@ -95,4 +101,5 @@ export default {
   padding-left: 0px;
   padding-right: 0px;
 }
+
 </style>

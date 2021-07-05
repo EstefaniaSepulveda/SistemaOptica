@@ -13,7 +13,7 @@
             <div class="logo-img">
                 <img src="@/assets/img/optica/logo-optica.png" alt="">
             </div>
-          {{title}}
+          <label @click="optica()">Optica</label>
         </a>
       </div>
       <slot>
@@ -39,12 +39,10 @@
 <script>
 import MovingArrow from "./MovingArrow.vue";
 import SidebarLink from "./SidebarLink";
+import router from "../../router"
 export default {
   props: {
-    title: {
-      type: String,
-      default: "Optica"
-    },
+    
     backgroundColor: {
       type: String,
       default: "black",
@@ -107,6 +105,9 @@ export default {
     };
   },
   methods: {
+    optica(){
+      router.push({ path: "Home" });
+    },
     findActiveLink() {
       this.links.forEach((link, index) => {
         if (link.isActive()) {

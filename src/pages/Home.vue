@@ -1,14 +1,15 @@
 <template>
-  <div class="home">
-    <productoList></productoList>
-    <productoItem></productoItem>
+  <div>
+  
+    <producto-list></producto-list>
   </div>
 </template>
 <script>
-import ProductoList from "@/cliente/ProductoList.vue";
-import ProductoItem from "@/cliente/ProductoItem.vue";
+
+import ProductoList from "./ProductoList.vue";
 export default {
-  name: "home",
-  components: { ProductoList, ProductoItem },
+  name: "Home",
+  components: { ProductoList },
+ 
 };
 </script>

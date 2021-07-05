@@ -1,19 +1,29 @@
 <template>
   <div class="wrapper">
-    
     <side-bar>
-      
       <template slot="links">
-        <sidebar-link v-if="!login" to="/login" name="Login" icon="ti-user" />
-        
+        <b-button style="background-color: #3a8e99">
+          <sidebar-link
+            @click="login()"
+            v-if="!login"
+            to="/Login"
+            name="Login"
+            icon="ti-user"
+          />
+        </b-button>
+
+        <!--<button v-if="login" @click="logout()" name="Log out">Log out</button>-->
+
         <sidebar-link
           v-if="perfil === 'cliente'"
+          @click.prevent="producto()"
           to="/productoList"
-          name="Producto List"
+          name="Producto"
           icon="ti-eye"
         />
         <sidebar-link
           v-if="perfil === 'cliente'"
+          @click.prevent="carro()"
           to="/CarroCompra"
           name="Carro"
           icon="ti-eye"
@@ -21,18 +31,20 @@
 
         <sidebar-link
           v-if="perfil === 'admin'"
+          @click.prevent="stock()"
           to="/Stock"
-          name="Catálogo"
+          name="Stock"
           icon="ti-eye"
         />
         <sidebar-link
           v-if="perfil === 'admin'"
-          to="/Pedidos"
-          name="Pedidos"
+          @click.prevent="pedido()"
+          to="/Pedido"
+          name="Pedido"
           icon="ti-eye"
         />
       </template>
-      <button v-if="login" @click="logout()" name="Log out">Log out</button>
+
       <mobile-menu>
         <drop-down
           class="nav-item"
@@ -45,6 +57,7 @@
         <li class="divider"></li>
       </mobile-menu>
     </side-bar>
+
     <div class="main-panel">
       <top-navbar></top-navbar>
 
@@ -52,7 +65,6 @@
 
       <content-footer></content-footer>
     </div>
-
   </div>
 </template>
 <style lang="scss">
@@ -65,7 +77,8 @@ import MobileMenu from "./MobileMenu";
 import SideBar from "../../components/SidebarPlugin/SideBar.vue";
 import SidebarLink from "../../components/SidebarPlugin/SidebarLink.vue";
 import { mapGetters, mapActions } from "vuex";
-import Button from '../../components/Button.vue';
+import Button from "../../components/Button.vue";
+import routes from "../../router/routes";
 
 export default {
   components: {
@@ -76,19 +89,30 @@ export default {
     SideBar,
     SidebarLink,
     Button,
+    routes,
   },
   methods: {
-    logout(){
-      this.$store.dispatch('cambiarLogin',false)
-      this.$store.dispatch('cambiarPerfil','')
+    ...mapActions(["cambiarLogin", "cambiarPerfil"]),
+
+    login() {
+      this.$router.push({ path: "Login" });
+    },
+
+    carro() {
+      this.$router.push({ path: "CarroCompra" });
+    },
+    producto() {
+      this.$router.push({ path: "Producto" });
+    },
+
+    pedido() {
+      this.$router.push({ path: "Pedido" });
     },
     toggleSidebar() {
       if (this.$sidebar.showSidebar) {
         this.$sidebar.displaySidebar(false);
       }
     },
-
-    ...mapActions(["cambiarLogin", "cambiarPerfil"]),
   },
   computed: {
     ...mapGetters({
@@ -99,8 +123,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 ::v-deep .wrapper .sidebar .nav .nav-item.active .nav-link {
   color: #fff;
 }
+.btn{
+  border-color: #3a8e99;
+}
+
 </style>
