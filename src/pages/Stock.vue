@@ -1,39 +1,15 @@
 <template>
   <div>
-    <b-container class="bv-example-row">
-      <b-row>
-        <b-col />
-        <b-col />
-        <b-col />
-        <b-col />
-        <b-col />
-        <b-col />
-        <b-col />
-        <b-col />
-        <b-col
-          ><b-button
-            style="
-              background-color: transparent;
-              border-color: black;
-              color: black;
-            "
-            v-if="perfil === 'cliente' || perfil === 'admin'"
-            @click="logout()"
-            name="Log out"
-            >Log out</b-button
-          ></b-col
-        >
-      </b-row>
-    </b-container>
-    Hola
+    <producto-list></producto-list>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-
+import ProductoList from "./ProductoList.vue";
 export default {
   name: "Stock",
+  components: { ProductoList },
   methods: {
     logout() {
       this.$store.dispatch("cambiarLogin", false);

@@ -10,6 +10,7 @@ import Recuperar from "@/pages/Recuperar.vue"
 //admin
 import Stock from "@/pages/Stock.vue";
 import Pedido from "@/pages/Pedido.vue";
+import AddProducto from "@/pages/AddProducto.vue";
 //cliente
 import Transferencia from "@/pages/Transferencia.vue";
 import Receta from "@/pages/Receta.vue";
@@ -28,6 +29,11 @@ const routes = [
         path: "Recuperar",
         name: "Recuperar",
         component: Recuperar,
+      },
+      {
+        path: "AddProducto",
+        name: "AddProducto",
+        component: AddProducto,
       },
       {
         path: "Pedido",

@@ -9,7 +9,7 @@
             :data="tableData"
             :columns="table.columns"
           >
-            <template slot-scope="{ row }">
+            <div slot-scope="{ row }">
               <td>{{ row.nombreCristal }}</td>
               <td>
                 <b>{{ row.descripcion }}</b>
@@ -20,7 +20,7 @@
                   <i class="ti ti-check"></i>
                 </p-button>    
               </td>
-            </template>
+            </div>
           </paper-table>
         </div>
       </card>

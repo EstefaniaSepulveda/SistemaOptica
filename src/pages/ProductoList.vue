@@ -9,7 +9,17 @@
         <b-col />
         <b-col />
         <b-col />
-        <b-col />
+        <b-col>
+          <div>
+            <b-button v-if="perfil === 'admin'" @click="showModal = !showModal"
+              >Nuevo Producto</b-button
+            >
+
+            <b-modal size="xl" v-model="showModal" id="modal-2">
+              <add-producto></add-producto>
+            </b-modal>
+          </div>
+        </b-col>
         <b-col
           ><b-button
             style="
@@ -60,6 +70,8 @@ import { Card, StatsCard } from "@/components";
 import ProductoItem from "./ProductoItem";
 import { mapGetters } from "vuex";
 import gql from "graphql-tag";
+import AddProducto from "./AddProducto.vue";
+
 const GET_ARMAZON = gql`
   query getArmazon($marca: String!) {
     armazon(where: { marca: { nombreMarca: { _ilike: $marca } } }) {
@@ -77,12 +89,14 @@ const GET_ARMAZON = gql`
 `;
 export default {
   name: "ProductoList",
-  components: { ProductoItem, Card, StatsCard },
+  components: { ProductoItem, Card, AddProducto },
 
   data() {
     return {
       armazones: [],
       marca: "%",
+      showModal: false,
+      toggleModal: false,
     };
   },
   methods: {

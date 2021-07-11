@@ -65,7 +65,7 @@ export default {
       if (this.correo == "" && this.contrasena == "") {
         alert("campos vacios");
       } else {
-        if (correo == "admin" && contrasena == "pass") {
+        if (correo == "admin@administrador.cl" && contrasena == "pass") {
           this.$store.dispatch("cambiarLogin", true);
           this.$store.dispatch("cambiarPerfil", "admin");
           router.push({ path: "Stock" });

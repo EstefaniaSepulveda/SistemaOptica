@@ -14,7 +14,7 @@
         </div>
       </div>
       <div>
-        <!--AQUI MODAL-->
+        <!--AQUI MODAL CRISTALES-->
         <div>
           <b-button v-if="perfil === 'cliente'" @click="showModal = !showModal"
             >Seleccionar Cristal</b-button
@@ -26,7 +26,7 @@
 
           <b-button
             v-if="perfil === 'cliente'"
-            @click="agregarCarrito()"
+            @click="agregarCarrito(armazon.idArmazon)"
             class="agregarCarrito"
             variant="primary"
           >
@@ -70,9 +70,12 @@ export default {
       });
     },
 
-    agregarCarrito() {
+    agregarCarrito(idArmazon) {
+      this.$store.dispatch("carroCompra", idArmazon);
+
+      /*
       this.armazon = { ...this.armazon };
-      this.$store.commit("setArmazonActual", this.armazon);
+      this.$store.commit("setArmazonActual", this.armazon);*/
 
       this.notifyVue("top", "right");
     },

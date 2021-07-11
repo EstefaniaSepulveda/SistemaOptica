@@ -38,6 +38,10 @@ export default new Vuex.Store({
   },
 
   mutations: {
+    setCarroCompra(state,payload){
+      state.carroCompra = payload
+    },
+
     setPerfil(state, payload) {
       state.perfil = payload;
     },
@@ -68,7 +72,7 @@ export default new Vuex.Store({
 
     setCristalActual(state, payload) {
       state.cristalActual.idCristal = payload.idCristal;
-      let cristalCarro = state.CarroCompra.find(cristal => {
+      let cristalCarro = state.carroCompra.find(cristal => {
         return cristal.idCristal === payload.idCristal
       })
       if (cristalCarro) {
@@ -95,6 +99,10 @@ export default new Vuex.Store({
   },
 
   actions: {
+
+    carroCompra({commit}, carroCompra){
+      commit("setCarroCompra", carroCompra)
+    },
 
     async precioTotalCarro({commit}, precioTotalCarro) {
       commit("setPrecioTotalCarro", precioTotalCarro)
