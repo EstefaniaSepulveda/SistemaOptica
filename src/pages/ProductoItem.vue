@@ -44,10 +44,11 @@ import { Button as PButton } from "@/components";
 import { mapGetters } from "vuex";
 import Cristales from "./Cristales";
 import carroCompra from "./CarroCompra";
+import UpdateArmazon from "./UpdateArmazon.vue";
 export default {
   name: "ProductoItem",
   props: ["armazon"],
-  components: { Card, PButton, Cristales, carroCompra },
+  components: { Card, PButton, Cristales, UpdateArmazon },
 
   data() {
     return {
@@ -60,6 +61,7 @@ export default {
     };
   },
   methods: {
+    
     notifyVue(verticalAlign, horizontalAlign) {
       const color = Math.floor(Math.random() * 4 + 1);
       this.$notify({
@@ -104,5 +106,4 @@ export default {
   padding-left: 0px;
   padding-right: 0px;
 }
-
 </style>

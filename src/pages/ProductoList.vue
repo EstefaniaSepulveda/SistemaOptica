@@ -8,14 +8,16 @@
         <b-col />
         <b-col />
         <b-col />
-        <b-col />
+        <b-button v-if="perfil === 'admin'" variant="info" @click="actualizar()"
+          >Actualizar</b-button
+        >
         <b-col>
           <div>
             <b-button v-if="perfil === 'admin'" @click="showModal = !showModal"
               >Nuevo Producto</b-button
             >
 
-            <b-modal size="xl" v-model="showModal" id="modal-2">
+            <b-modal size="lg" v-model="showModal" id="modal-2">
               <add-producto></add-producto>
             </b-modal>
           </div>
@@ -100,6 +102,9 @@ export default {
     };
   },
   methods: {
+    actualizar() {
+      this.$router.push({ path: "UpdateArmazon" });
+    },
     logout() {
       this.$store.dispatch("cambiarLogin", false);
       this.$store.dispatch("cambiarPerfil", "");

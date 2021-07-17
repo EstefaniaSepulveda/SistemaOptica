@@ -2,8 +2,12 @@
   <div class="divLogin">
     <div class="container">
       <div class="divcont">
-        <h3>Nuevo Producto</h3>
+        <h3>Actualizar Producto</h3>
+
         <form @submit.prevent="submit">
+          <input type="text" placeholder="Id Armazón" v-model="idArmazon" />
+          <!--<b-button variant="secondary" @click="buscar()">Buscar</b-button>-->
+
           <input type="text" placeholder="Valor" v-model="valor" />
           <input type="text" placeholder="Color" v-model="color" />
           <input type="text" placeholder="Material" v-model="material" />
@@ -44,80 +48,71 @@
             </b-row>
           </b-container>
 
-          <input class="button-primary" type="submit" value="Agregar" />
+          <input class="button-primary" type="submit" value="Actualizar" />
         </form>
       </div>
     </div>
   </div>
 </template>
-
+ 
 <script>
 import gql from "graphql-tag";
 import { InMemoryCache } from "apollo-cache-inmemory";
-const ADD_PRODUCTO = gql`
-  mutation addProducto(
-    $valor: Int!
-    $color: String!
-    $material: String!
+
+const UPDATE_ARMAZON = gql`
+  mutation updateArmazon(
+    $idArmazon: Int!
     $id_Marca: Int!
+    $material: String
     $stock: Int!
+    $color: String!
+    $valor: Int!
   ) {
-    insert_armazon(
-      objects: {
+    update_armazon(
+      where: { idArmazon: { _eq: $idArmazon } }
+      _set: {
         color: $color
         id_Marca: $id_Marca
         material: $material
         stock: $stock
         valor: $valor
-        id_transferencia: 0
-        imagen: "http://www.otece.com.ec/wp-content/uploads/2019/07/sin-imagen.jpg"
       }
     ) {
-      returning {
-        idArmazon
-      }
+      affected_rows
     }
   }
 `;
 export default {
-  name: "AddProducto",
+  name: "UpdateArmazon",
+
   data() {
     return {
-      valor: "",
       color: "",
-      material: "",
       id_Marca: "",
+      material: "",
       stock: "",
+      valor: "",
     };
   },
-  apollo: {},
   methods: {
     submit() {
-      const { valor, color, material, id_Marca, stock } = this.$data;
       this.$apollo.mutate({
-        mutation: ADD_PRODUCTO,
+        mutation: UPDATE_ARMAZON,
         variables: {
-          valor,
-          color,
-          material,
-          id_Marca,
-          stock,
+          idArmazon: this.idArmazon,
+          color: this.color,
+          id_Marca: this.id_Marca,
+          material: this.material,
+          stock: this.stock,
+          valor: this.valor,
         },
-        refetchQueries: ["getArmazon"],
-        update: (cache, { data: { insert_armazon } }) => {
-          console.log(insert_armazon);
+        update: (store, { data: { updateArmazon } }) => {
+          if (updateArmazon.affected_rows) {
+            console.log(updateArmazon);
+          }
         },
       });
-      (this.valor = ""),
-        (this.color = ""),
-        (this.material = ""),
-        (this.id_Marca = ""),
-        (this.stock = "");
-      alert("Producto Agregado");
     },
   },
 };
 </script>
-
-<style>
-</style>

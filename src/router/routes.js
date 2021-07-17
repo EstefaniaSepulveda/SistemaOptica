@@ -18,6 +18,7 @@ import CarroCompra from "@/pages/CarroCompra.vue";
 import Cristales from "@/pages/Cristales.vue";
 import ProductoItem from "@/pages/ProductoItem.vue";
 import ProductoList from "@/pages/ProductoList.vue";
+import UpdateArmazon from "@/pages/UpdateArmazon.vue"
 
 const routes = [
   {
@@ -29,6 +30,11 @@ const routes = [
         path: "Recuperar",
         name: "Recuperar",
         component: Recuperar,
+      },
+      {
+        path: "UpdateArmazon",
+        name: "Update",
+        component: UpdateArmazon,
       },
       {
         path: "AddProducto",
