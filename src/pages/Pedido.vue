@@ -20,7 +20,7 @@
             v-if="perfil === 'cliente' || perfil === 'admin'"
             @click="logout()"
             name="Log out"
-            >Log out</b-button
+            >Cerrar Sesión</b-button
           ></b-col
         >
       </b-row>

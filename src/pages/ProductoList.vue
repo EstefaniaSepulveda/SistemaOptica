@@ -32,14 +32,14 @@
             v-if="perfil === 'cliente' || perfil === 'admin'"
             @click="logout()"
             name="Log out"
-            >Log out</b-button
+            >Cerrar Sesión</b-button
           ></b-col
         >
       </b-row>
     </b-container>
 
     <div class="row">
-      <b-navbar toggleable="md" type="dark" variant="dark">
+      <b-navbar toggleable="md" type="dark" variant="info">
         <b-navbar-brand class="text-white">Marcas</b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -50,6 +50,13 @@
             <a class="nav-link" @click="marca = 'ray-ban%'">Ray-Ban</a>
             <a class="nav-link" @click="marca = 'vogue%'">Vogue</a>
             <a class="nav-link" @click="marca = 'oakley%'">Oakley</a>
+            <a class="nav-link" @click="marca = 'Ralph Lauren%'"
+              >Ralph Lauren</a
+            >
+            <a class="nav-link" @click="marca = 'Northweek%'">Northweek</a>
+            <a class="nav-link" @click="marca = 'Armani Exchange%'"
+              >Armani Exchange</a
+            >
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
@@ -76,7 +83,10 @@ import AddProducto from "./AddProducto.vue";
 
 const GET_ARMAZON = gql`
   query getArmazon($marca: String!) {
-    armazon(where: { marca: { nombreMarca: { _ilike: $marca } } }) {
+    armazon(
+      where: { marca: { nombreMarca: { _ilike: $marca } }, stock: { _gt: 2 } }
+      order_by: { idArmazon: asc }
+    ) {
       idArmazon
       valor
       color
@@ -132,14 +142,8 @@ export default {
 </script>
 
 <style>
-.card-body {
-  font-size: 7px;
-}
-.card {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-.card img {
-  width: 82px;
+
+.navbar {
+  width: 100%;
 }
 </style>

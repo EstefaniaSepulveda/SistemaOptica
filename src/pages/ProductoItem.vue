@@ -1,40 +1,47 @@
 <template>
   <div>
-    <card class="card-user">
-      <div class="wrap-imagen" slot="image">
-        <img class="imagen" :src="armazon.imagen" />
-      </div>
-      <div>
-        <div class="datos text-center">
-          <h1>Valor: ${{ armazon.valor }}</h1>
-          <p>Color: {{ armazon.color }}</p>
-          <p>Marca: {{ armazon.marca.nombreMarca }}</p>
-          <p>Material: {{ armazon.material }}</p>
-          <h3>Stock: {{ armazon.stock }}</h3>
-        </div>
-      </div>
-      <div>
-        <!--AQUI MODAL CRISTALES-->
-        <div>
-          <b-button v-if="perfil === 'cliente'" @click="showModal = !showModal"
-            >Seleccionar Cristal</b-button
-          >
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <card class="card-user">
+          <div class="wrap-imagen" slot="image">
+            <img class="imagen" :src="armazon.imagen" />
+          </div>
+          <div>
+            <div class="datos text-center">
+              <h1 v-if="perfil === 'admin'">Id: {{ armazon.idArmazon }}</h1>
+              <h1>Valor: ${{ armazon.valor }}</h1>
+              <p>Color: {{ armazon.color }}</p>
+              <p>Marca: {{ armazon.marca.nombreMarca }}</p>
+              <p>Material: {{ armazon.material }}</p>
+              <h3>Stock: {{ armazon.stock }}</h3>
+            </div>
+          </div>
+          <div>
+            <!--AQUI MODAL CRISTALES-->
+            <div>
+              <b-button
+                v-if="perfil === 'cliente'"
+                @click="showModal = !showModal"
+                >Seleccionar Cristal</b-button
+              >
 
-          <b-modal size="xl" v-model="showModal" id="modal-1">
-            <cristales></cristales>
-          </b-modal>
+              <b-modal size="xl" v-model="showModal" id="modal-1">
+                <cristales></cristales>
+              </b-modal>
 
-          <b-button
-            v-if="perfil === 'cliente'"
-            @click="agregarCarrito(armazon.idArmazon)"
-            class="agregarCarrito"
-            variant="primary"
-          >
-            Añadir al Carrito
-          </b-button>
-        </div>
+              <b-button
+                v-if="perfil === 'cliente'"
+                @click="agregarCarrito(armazon.idArmazon)"
+                class="agregarCarrito"
+                variant="primary"
+              >
+                Añadir al Carrito
+              </b-button>
+            </div>
+          </div>
+        </card>
       </div>
-    </card>
+    </div>
   </div>
 </template>
 
@@ -61,7 +68,6 @@ export default {
     };
   },
   methods: {
-    
     notifyVue(verticalAlign, horizontalAlign) {
       const color = Math.floor(Math.random() * 4 + 1);
       this.$notify({
@@ -91,19 +97,7 @@ export default {
 </script>
 
 <style scoped>
-.wrap-imagen {
-  text-align: center;
-}
-
-.card .card-image {
-  width: 100%;
-  border-radius: none;
-  height: 152px;
-}
-.card {
-  width: 30%;
-  padding-top: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
+.col-md-6 {
+  display: flex !important;
 }
 </style>
