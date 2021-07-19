@@ -6,11 +6,13 @@ import Home from "@/pages/Home.vue";
 import Login from "@/pages/Login";
 import Registro from "@/pages/Registro.vue";
 import NotFound from "@/pages/NotFoundPage.vue";
-import Recuperar from "@/pages/Recuperar.vue"
+
 //admin
 import Stock from "@/pages/Stock.vue";
 import Pedido from "@/pages/Pedido.vue";
 import AddProducto from "@/pages/AddProducto.vue";
+import UpdateArmazon from "@/pages/UpdateArmazon.vue"
+import Imagen from "@/pages/Imagen.vue"
 //cliente
 import Transferencia from "@/pages/Transferencia.vue";
 import Receta from "@/pages/Receta.vue";
@@ -18,7 +20,7 @@ import CarroCompra from "@/pages/CarroCompra.vue";
 import Cristales from "@/pages/Cristales.vue";
 import ProductoItem from "@/pages/ProductoItem.vue";
 import ProductoList from "@/pages/ProductoList.vue";
-import UpdateArmazon from "@/pages/UpdateArmazon.vue"
+
 
 const routes = [
   {
@@ -27,10 +29,11 @@ const routes = [
     redirect: "/Home",
     children: [
       {
-        path: "Recuperar",
-        name: "Recuperar",
-        component: Recuperar,
+        path: "Imagen",
+        name: "Imagen",
+        component: Imagen,
       },
+      
       {
         path: "UpdateArmazon",
         name: "Update",

@@ -3,7 +3,10 @@
     <div class="container">
       <div class="divcont">
         <h3>Nuevo Producto</h3>
-        <form @submit.prevent="submit">
+
+        <form @submit.prevent="submit" method="post">
+          <input type="file" @change="processFile($event)" />
+          <button type="submit">Aceptar</button>
           <input type="text" placeholder="Valor" v-model="valor" />
           <input type="text" placeholder="Color" v-model="color" />
           <input type="text" placeholder="Material" v-model="material" />
@@ -70,7 +73,7 @@ const ADD_PRODUCTO = gql`
         stock: $stock
         valor: $valor
         id_transferencia: 0
-        imagen: "http://www.otece.com.ec/wp-content/uploads/2019/07/sin-imagen.jpg"
+        imagen: ""
       }
     ) {
       returning {
@@ -88,12 +91,31 @@ export default {
       material: "",
       id_Marca: "",
       stock: "",
+      imagen2: "",
+      CLOUDINARY_URL: "https://api.cloudinary.com/v1_1/dspficfpm/image/upload",
+      CLOUDINARY_UPLOAD_PRESET: "gkpqnet5",
+      imagen: [],
     };
   },
   apollo: {},
   methods: {
+    processFile(event) {
+      this.imagen = event.target.files[0];
+      console.log(this.imagen);
+    },
+
     submit() {
-      const { valor, color, material, id_Marca, stock } = this.$data;
+      let formData = new FormData();
+      formData.append("file", this.imagen); // le damos los datos de la imagen luego que se lleno en la funcion processFile()
+      formData.append("upload_preset", this.CLOUDINARY_UPLOAD_PRESET); // le damos nuestro preset
+
+      //subiendo imagen con fetch
+      fetch(this.CLOUDINARY_URL, { method: "POST", body: formData })
+        .then((response) => response.json()) //convertimos la respuesta en json
+        .then((data) => console.log(data.url)) // obtenemos la url de la imagen guardada
+        .catch((error) => console.log("ocurrio un error ", error)); //capturamos un posible error
+      
+      const { valor, color, material, id_Marca, stock} = this.$data;
       this.$apollo.mutate({
         mutation: ADD_PRODUCTO,
         variables: {
@@ -102,6 +124,7 @@ export default {
           material,
           id_Marca,
           stock,
+          
         },
         refetchQueries: ["getArmazon"],
         update: (cache, { data: { insert_armazon } }) => {

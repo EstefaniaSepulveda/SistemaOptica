@@ -61,7 +61,7 @@ export default {
     return {
       showModal: false,
       toggleModal: false,
-      type: ["success"],
+      type: ["success","info", "success", "warning", "danger"],
       notifications: {
         topCenter: false,
       },
@@ -99,5 +99,8 @@ export default {
 <style scoped>
 .col-md-6 {
   display: flex !important;
+}
+.card-user{
+  width: 80%;
 }
 </style>
