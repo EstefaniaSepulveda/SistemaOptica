@@ -31,7 +31,7 @@
 
               <b-button
                 v-if="perfil === 'cliente'"
-                @click="agregarCarrito(armazon.idArmazon)"
+                @click="agregarCarrito(armazon)"
                 class="agregarCarrito"
                 variant="primary"
               >
@@ -48,7 +48,7 @@
 <script>
 import { Card } from "@/components";
 import { Button as PButton } from "@/components";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import Cristales from "./Cristales";
 import carroCompra from "./CarroCompra";
 import UpdateArmazon from "./UpdateArmazon.vue";
@@ -78,8 +78,8 @@ export default {
       });
     },
 
-    agregarCarrito(idArmazon) {
-      this.$store.dispatch("carroCompra", idArmazon);
+    agregarCarrito(armazon) {
+      this.$store.dispatch("agregarItemCarro", armazon);
 
       /*
       this.armazon = { ...this.armazon };
@@ -92,6 +92,9 @@ export default {
     ...mapGetters({
       perfil: "getPerfil",
     }),
+    ...mapActions({
+      agregarItemCarro: "agregarItemCarro"
+    })
   },
 };
 </script>

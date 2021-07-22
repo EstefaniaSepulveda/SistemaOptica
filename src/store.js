@@ -23,14 +23,20 @@ export default new Vuex.Store({
     idCliente: '',
 
     precioTotalCarro: 0,
-    idCliente: ''
+
   },
 
   getters: {
     getArmazonActual: state => state.armazonActual,
     getCristalActual: state => state.cristalActual,
     getCarroCompra: state => state.carroCompra,
-    getPrecioTotalCarro: state => state.precioTotalCarro,
+    getPrecioTotalCarro: function(state) {
+      let total = 0
+      const carro = state.carroCompra
+      carro.forEach(item => total += item.valor)
+      state.precioTotalCarro = total;
+      return state.precioTotalCarro;
+    },
     getIdCliente: state => state.idCliente,
 
     getPerfil: state => state.perfil,
@@ -38,8 +44,8 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    setCarroCompra(state,payload){
-      state.carroCompra = payload
+    setAgregarItemCarro(state, payload) {
+      state.carroCompra.push(payload);
     },
 
     setPerfil(state, payload) {
@@ -50,8 +56,11 @@ export default new Vuex.Store({
       state.login = payload
     },
 
-    setPrecioTotalCarro(state, payload) {
-      state.precioTotalCarro += payload;
+     setPrecioTotalCarro(state) {
+      let total = 0
+      const carro = state.carroCompra
+      carro.forEach(item => total += item.valor)
+      state.precioTotalCarro = total;
     },
 
     setIdCliente(state, payload) {
@@ -100,23 +109,23 @@ export default new Vuex.Store({
 
   actions: {
 
-    carroCompra({commit}, carroCompra){
-      commit("setCarroCompra", carroCompra)
+    agregarItemCarro({ commit }, itemCarro) {
+      commit("setAgregarItemCarro", itemCarro)
     },
 
-    async precioTotalCarro({commit}, precioTotalCarro) {
-      commit("setPrecioTotalCarro", precioTotalCarro)
+     precioTotalCarro({ commit }) {
+      commit("setPrecioTotalCarro")
     },
 
-    async removerArmazonDelCarro(state, payload) {
+    removerArmazonDelCarro(state, payload) {
       state.commit("removerArmazonDelCarro", payload);
     },
 
-    async removerCristalDelCarro(state, payload) {
+    removerCristalDelCarro(state, payload) {
       state.commit("removerCristalDelCarro", payload);
     },
 
-    async limpiarCarro(state) {
+    limpiarCarro(state) {
       state.commit("limpiarCarro");
     },
 

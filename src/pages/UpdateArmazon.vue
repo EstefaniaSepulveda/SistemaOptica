@@ -36,7 +36,7 @@
               </b-col>
               <b-col>
                 <input
-                  class="radio3"
+                  class="radio"
                   type="radio"
                   id="3"
                   value="3"
@@ -44,6 +44,39 @@
                   v-model="id_Marca"
                 />
                 <label for="3">Vogue</label>
+              </b-col>
+              <b-col>
+                <input
+                  class="radio"
+                  type="radio"
+                  id="4"
+                  value="4"
+                  name="Marca"
+                  v-model="id_Marca"
+                />
+                <label for="4">Ralph Lauren</label>
+              </b-col>
+              <b-col>
+                <input
+                  class="radio"
+                  type="radio"
+                  id="5"
+                  value="5"
+                  name="Marca"
+                  v-model="id_Marca"
+                />
+                <label for="5">Northweek</label>
+              </b-col>
+              <b-col>
+                <input
+                  class="radio"
+                  type="radio"
+                  id="6"
+                  value="6"
+                  name="Marca"
+                  v-model="id_Marca"
+                />
+                <label for="6"> Armani Exchange</label>
               </b-col>
             </b-row>
           </b-container>

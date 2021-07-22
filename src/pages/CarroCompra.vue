@@ -28,9 +28,13 @@
     
     <card class="carro">
       <div v-for="armazon in cart" :key="armazon.idArmazon">
-        <div class="px-2 d-flex justify-content-between">
+        <div class="d-flex justify-content-between">
           <div>
-            <strong>{{ armazon.marca }}</strong>
+            <strong>{{ armazon.marca.nombreMarca }}</strong>
+            <br/>
+            {{armazon.color}}
+            <br/>
+            {{armazon.material}}
             <br />
             ${{ armazon.valor }}
           </div>
@@ -60,18 +64,20 @@
 
 <script>
 import router from "../router";
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "CarroCompra",
 
   computed: {
     ...mapGetters({
       perfil: "getPerfil",
+      getPrecioTotalCarro: "getPrecioTotalCarro"
     }),
+    
     cart() {
       return this.$store.getters.getCarroCompra;
     },
-    precioTotal() {
+     precioTotal() {
       return this.$store.getters.getPrecioTotalCarro;
     },
   },
