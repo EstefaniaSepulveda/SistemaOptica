@@ -1,39 +1,23 @@
 <template>
   <div>
-    <div class="row">
-      <card title="Cristales">
-        <div slot="raw-content" class="table-responsive">
-          <paper-table
-            type="hover"
-            class="col-12"
-            :data="tableData"
-            :columns="table.columns"
-          >
-            <div slot-scope="{ row }">
-              <td>{{ row.nombreCristal }}</td>
-              <td>
-                <b>{{ row.descripcion }}</b>
-              </td>
-              <td>${{ row.valorCristal }}</td>
-              <td>
-                <p-button class="agregarCarrito" type="success" icon @click="agregarCarrito(row)">
-                  <i class="ti ti-check"></i>
-                </p-button>    
-              </td>
-            </div>
-          </paper-table>
-        </div>
-      </card>
+    <div class="list-of-cristales">
+      <cristales-item
+        v-for="cristal in cristales"
+        :key="cristal.idCristal"
+        :cristal="cristal"
+        class="cristal-item"
+      ></cristales-item>
     </div>
   </div>
 </template>
 
+
 <script>
-import { PaperTable } from "@/components";
+import { Card, StatsCard } from "@/components";
+
+import CristalesItem from "./CristalesItem.vue";
 import gql from "graphql-tag";
 import { InMemoryCache } from "apollo-cache-inmemory";
-
-const tableColumns = ["Nombre", "Detalle", "Valor"];
 
 const GET_CRISTAL = gql`
   query getCristales {
@@ -47,27 +31,15 @@ const GET_CRISTAL = gql`
 `;
 
 export default {
+  components: { CristalesItem, Card },
   name: "Cristales",
-  components: { PaperTable },
 
   data() {
     return {
       cristales: [],
-      cristal: {},
-
-      table: {
-        columns: [...tableColumns],
-      },
     };
   },
-  computed: {
-    tableData: function () {
-      if (this.cristales && this.cristales.length) {
-        return this.cristales;
-      }
-      return [];
-    },
-  },
+  
   apollo: {
     cristales: {
       query: GET_CRISTAL,

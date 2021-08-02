@@ -20,7 +20,7 @@ import CarroCompra from "@/pages/CarroCompra.vue";
 import Cristales from "@/pages/Cristales.vue";
 import ProductoItem from "@/pages/ProductoItem.vue";
 import ProductoList from "@/pages/ProductoList.vue";
-
+import CristalesItem from "@/pages/CristalesItem.vue"
 
 const routes = [
   {
@@ -28,6 +28,11 @@ const routes = [
     component: DashboardLayout,
     redirect: "/Home",
     children: [
+      {
+        path: "CristalesItem",
+        name: "CristalesItem",
+        component: CristalesItem,
+      },
       {
         path: "Imagen",
         name: "Imagen",

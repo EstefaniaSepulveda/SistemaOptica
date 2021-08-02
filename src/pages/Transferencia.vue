@@ -30,20 +30,17 @@
     <p>N° Cuenta: xxxxx</p>
     <p>Nombre: xxx</p>
     <p>Correo Electronico: xxxxx@xxxxx.com</p>
-    <h2>Receta Médica</h2>
-    <p>
-      Por favor adjuntar el comprobante de pago y una foto de la receta médica
-      para su verificación y enviar los siguientes datos:
-    </p>
-    <p>Rut:</p>
-    <p>Nombre completo:</p>
-    <p>Numero de telefono:</p>
+    <p> <strong> Por favor adjuntar comprobante de pago. </strong></p>
+    <imagen></imagen>
+  
   </div>
 </template>
 <script>
 import { mapGetters } from "vuex";
+import Imagen from './Imagen.vue';
 
 export default {
+  components: { Imagen },
   name: "Transferencia",
   methods: {
     logout() {

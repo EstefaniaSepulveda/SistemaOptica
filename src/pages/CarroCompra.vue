@@ -25,21 +25,21 @@
         >
       </b-row>
     </b-container>
-    
+
     <card class="carro">
       <div v-for="armazon in cart" :key="armazon.idArmazon">
         <div class="d-flex justify-content-between">
           <div>
-            <strong>{{ armazon.marca.nombreMarca }}</strong>
-            <br/>
-            {{armazon.color}}
-            <br/>
-            {{armazon.material}}
-            <br />
-            ${{ armazon.valor }}
+            <h1>
+              <strong>Marca: {{ armazon.marca.nombreMarca }}</strong>
+            </h1>
+            <h2>Color: {{ armazon.color }}</h2>
+            <h2>Material: {{ armazon.material }}</h2>
+            <h2>Valor: ${{ armazon.valor }}</h2>
           </div>
           <div>
             <a
+              v-if="armazon.hasOwnProperty('idArmazon')"
               href="#"
               class="badge badge-secondary"
               @click.prevent="removerArmazonDelCarro(armazon)"
@@ -51,8 +51,35 @@
       </div>
     </card>
 
+    <card class="carro2">
+      <div v-for="cristal in cart2" :key="cristal.idCristal">
+        <div class="d-flex justify-content-between">
+          <div>
+            <h1><strong>Nombre Cristal{{ cristal.nombreCristal }}</strong></h1>
+
+            <h2>Valor: ${{ cristal.valorCristal }}</h2>
+            <h2>Descripción: {{ cristal.descripcion }}</h2>
+          </div>
+          <div>
+            <a
+              v-if="cristal.hasOwnProperty('idCristal')"
+              href="#"
+              class="badge badge-secondary"
+              @click.prevent="removerCristalDelCarro(cristal)"
+              >Remover</a
+            >
+          </div>
+        </div>
+        <hr />
+      </div>
+    </card>
     <div class="d-flex justify-content-between">
-      <span>Total: ${{ precioTotal }}</span>
+      <h4>
+        <strong
+          ><span>Total: ${{ precioTotal }}</span></strong
+        >
+      </h4>
+
       <a href="#" @click.prevent="clearCartItems()">Limpiar carro</a>
     </div>
 
@@ -71,14 +98,19 @@ export default {
   computed: {
     ...mapGetters({
       perfil: "getPerfil",
-      getPrecioTotalCarro: "getPrecioTotalCarro"
     }),
-    
+
     cart() {
-      return this.$store.getters.getCarroCompra;
+      return this.$store.getters.getCarroCompraArmazon;
     },
-     precioTotal() {
-      return this.$store.getters.getPrecioTotalCarro;
+    cart2() {
+      return this.$store.getters.getCarroCompraCristal;
+    },
+    precioTotal() {
+      let total =
+        this.$store.getters.getPrecioTotalA +
+        this.$store.getters.getPrecioTotalC;
+      return total;
     },
   },
 
@@ -90,6 +122,10 @@ export default {
     },
     removerArmazonDelCarro(armazon) {
       this.$store.dispatch("removerArmazonDelCarro", armazon);
+    },
+
+    removerCristalDelCarro(cristal) {
+      this.$store.dispatch("removerCristalDelCarro", cristal);
     },
 
     clearCartItems() {
@@ -104,4 +140,7 @@ export default {
 </script>
 
 <style scoped>
+.card-body {
+  font-size: 100%;
+}
 </style>

@@ -9,34 +9,37 @@ export default new Vuex.Store({
     perfil: '',
     login: false,
 
-    armazonActual: {
-      idArmazon: '',
-      marca: '',
-      color: '',
-    },
-
-    cristalActual: {
-      idCristal: '',
-    },
-
-    carroCompra: [],
+    carroCompraArmazon: [],
+    carroCompraCristal: [],
     idCliente: '',
 
+    precioArmazon: 0,
+    precioCristal: 0,
     precioTotalCarro: 0,
 
   },
 
   getters: {
-    getArmazonActual: state => state.armazonActual,
-    getCristalActual: state => state.cristalActual,
-    getCarroCompra: state => state.carroCompra,
-    getPrecioTotalCarro: function(state) {
+    
+    getCarroCompraArmazon: state => state.carroCompraArmazon,
+    getCarroCompraCristal: state => state.carroCompraCristal,
+
+    getPrecioTotalA: function(state){
       let total = 0
-      const carro = state.carroCompra
+      const carro = state.carroCompraArmazon
       carro.forEach(item => total += item.valor)
-      state.precioTotalCarro = total;
-      return state.precioTotalCarro;
+      state.precioArmazon = total;
+      return state.precioArmazon;
     },
+
+    getPrecioTotalC: function(state){
+      let total = 0
+      const carro = state.carroCompraCristal
+      carro.forEach(item => total += item.valorCristal)
+      state.precioCristal = total;
+      return state.precioCristal;
+    },
+
     getIdCliente: state => state.idCliente,
 
     getPerfil: state => state.perfil,
@@ -44,8 +47,12 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    setAgregarItemCarro(state, payload) {
-      state.carroCompra.push(payload);
+    setAgregarArmazonCarro(state, payload) {
+      state.carroCompraArmazon.push(payload);
+    },
+
+    setAgregarCristalCarro(state, payload) {
+      state.carroCompraCristal.push(payload);
     },
 
     setPerfil(state, payload) {
@@ -56,61 +63,62 @@ export default new Vuex.Store({
       state.login = payload
     },
 
-     setPrecioTotalCarro(state) {
+    setPrecioTotalA(state){
       let total = 0
-      const carro = state.carroCompra
+      const carro = state.carroCompraArmazon
       carro.forEach(item => total += item.valor)
-      state.precioTotalCarro = total;
+      state.precioArmazon = total;
+      return state.precioArmazon;
+    },
+
+    setPrecioTotalC (state){
+      let total = 0
+      const carro = state.carroCompraCristal
+      carro.forEach(item => total += item.valorCristal)
+      state.precioCristal = total;
+      return state.precioCristal;
     },
 
     setIdCliente(state, payload) {
       state.idCliente = payload;
     },
 
-    setArmazonActual(state, payload) {
-      state.armazonActual.idArmazon = payload.idArmazon;
-      state.armazonActual.marca = payload.marca;
-      state.armazonActual.color = payload.color;
-      let armazonCarro = state.carroCompra.find(armazon => {
-        return armazon.idArmazon === payload.idArmazon
-      })
-      if (armazonCarro) {
-        state.carroCompra.push(payload);
-      }
-    },
-
-    setCristalActual(state, payload) {
-      state.cristalActual.idCristal = payload.idCristal;
-      let cristalCarro = state.carroCompra.find(cristal => {
-        return cristal.idCristal === payload.idCristal
-      })
-      if (cristalCarro) {
-        state.carroCompra.push(payload);
-      }
-    },
-
     removerArmazonDelCarro(state, payload) {
-      state.carroCompra = state.carroCompra.filter(armazon => {
+      state.carroCompraArmazon = state.carroCompraArmazon.filter(armazon => {
         return armazon.idArmazon !== payload.idArmazon;
       })
     },
 
     removerCristalDelCarro(state, payload) {
-      state.carroCompra = state.carroCompra.filter(cristal => {
+      state.carroCompraCristal = state.carroCompraCristal.filter(cristal => {
         return cristal.idCristal !== payload.idCristal;
       })
     },
 
     limpiarCarro(state) {
-      state.carroCompra = [];
-      precioTotalCarro = 0;
+      state.carroCompraArmazon = [];
+      state.carroCompraCristal = [];
+      precioArmazon = 0;
+      precioCristal = 0;
+     
     },
   },
 
   actions: {
 
-    agregarItemCarro({ commit }, itemCarro) {
-      commit("setAgregarItemCarro", itemCarro)
+    agregarArmazonCarro({ commit }, itemCarro) {
+      commit("setAgregarArmazonCarro", itemCarro)
+    },
+
+    agregarCristalCarro({ commit }, itemCarro) {
+      commit("setAgregarCristalCarro", itemCarro)
+    },
+
+    precioArmazon({commit}){
+      commit("setPrecioTotalA")
+    },
+    precioCristal({commit}){
+      commit("setPrecioTotalC")
     },
 
      precioTotalCarro({ commit }) {
