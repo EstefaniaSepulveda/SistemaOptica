@@ -59,9 +59,7 @@
 import gql from "graphql-tag";
 import { InMemoryCache } from "apollo-cache-inmemory";
 const UPDATE_ESTADO = gql`
-    mutation update_transferencia(
-        $idTransferencia2: Int!, 
-        $estado: Int!) {
+  mutation update_transferencia($idTransferencia2: Int!, $estado: Int!) {
     update_transferencia(
       where: { idTransferencia2: { _eq: $idTransferencia2 } }
       _set: { estado: $estado }
@@ -83,7 +81,7 @@ export default {
       this.$apollo.mutate({
         mutation: UPDATE_ESTADO,
         variables: {
-          idTransferencia: this.idTransferencia,
+          idTransferencia2: this.idTransferencia2,
           estado: this.estado,
         },
         refetchQueries: ["get_Tansferencia"],

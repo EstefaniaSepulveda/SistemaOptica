@@ -65,7 +65,7 @@
             @click="logout()"
             name="Log out"
             icon="ti-close"
-            >Cerrar</b-button
+            >Cerrar Sesión</b-button
           ></b-col
         >
       </b-row>
