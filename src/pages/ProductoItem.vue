@@ -9,6 +9,7 @@
           <div>
             <div class="datos text-center">
               <h1 v-if="perfil === 'admin'">Código: {{ armazon.idArmazon }}</h1>
+              <h6 v-if="perfil === 'cliente'">Código: {{ armazon.idArmazon }}</h6>
               <h1>Valor: ${{ armazon.valor }}</h1>
               <p>Color: {{ armazon.color }}</p>
               <p>Marca: {{ armazon.marca.nombreMarca }}</p>

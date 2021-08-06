@@ -5,7 +5,7 @@
         <h3>Actualizar Producto</h3>
 
         <form @submit.prevent="submit">
-          <input type="text" placeholder="Id Armazón" v-model="idArmazon" />
+          <input type="text" placeholder="Código Armazón" v-model="idArmazon" />
           <!--<b-button variant="secondary" @click="buscar()">Buscar</b-button>-->
 
           <input type="text" placeholder="Valor" v-model="valor" />
@@ -139,12 +139,14 @@ export default {
           stock: this.stock,
           valor: this.valor,
         },
+        refetchQueries: ["getArmazon"],
         update: (store, { data: { updateArmazon } }) => {
           if (updateArmazon.affected_rows) {
             console.log(updateArmazon);
           }
         },
       });
+      alert("Producto Actualizado");
     },
   },
 };

@@ -26,7 +26,7 @@
       </b-row>
     </b-container>
 
-    <div class="container">
+   <div class="container">
       <div class="divcont">
         <h3>Datos Receta Médica</h3>
         <form @submit.prevent="submit">

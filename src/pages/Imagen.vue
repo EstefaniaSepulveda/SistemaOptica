@@ -25,7 +25,7 @@ export default {
     notifyVue(verticalAlign, horizontalAlign) {
       const color = Math.floor(Math.random() * 4 + 1);
       this.$notify({
-        message: "Enviado al carro de compra",
+        message: "Archivo subido",
         horizontalAlign: horizontalAlign,
         verticalAlign: verticalAlign,
         type: this.type[color],

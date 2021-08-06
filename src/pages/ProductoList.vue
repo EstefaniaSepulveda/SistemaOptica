@@ -7,17 +7,49 @@
         <b-col />
         <b-col />
         <b-col />
-        <b-col />
-        <b-button v-if="perfil === 'admin'" variant="info" @click="actualizar()"
-          >Actualizar</b-button
-        >
         <b-col>
           <div>
-            <b-button v-if="perfil === 'admin'" @click="showModal = !showModal"
+            <b-button
+              v-b-modal.modal-4
+              v-if="perfil === 'admin'"
+              @click="showModal = !showModal"
+              >Eliminar</b-button
+            >
+
+            <b-modal size="lg" id="modal-4">
+              <eliminar-producto></eliminar-producto>
+            </b-modal>
+          </div>
+          <!--<b-button v-if="perfil === 'admin'" variant="info" @click="eliminar()"
+          >Eliminar</b-button
+        >-->
+        </b-col>
+        <div>
+          <b-button
+            v-b-modal.modal-3
+            v-if="perfil === 'admin'"
+            @click="showModal = !showModal"
+            >Actualizar</b-button
+          >
+
+          <b-modal size="lg" id="modal-3">
+            <update-armazon></update-armazon>
+          </b-modal>
+        </div>
+
+        <!--<b-button v-if="perfil === 'admin'" variant="info" @click="actualizar()"
+          >Actualizar</b-button
+        >-->
+        <b-col>
+          <div>
+            <b-button
+              v-b-modal.modal-2
+              v-if="perfil === 'admin'"
+              @click="showModal = !showModal"
               >Nuevo Producto</b-button
             >
 
-            <b-modal size="lg" v-model="showModal" id="modal-2">
+            <b-modal size="lg" id="modal-2">
               <add-producto></add-producto>
             </b-modal>
           </div>
@@ -32,7 +64,8 @@
             v-if="perfil === 'cliente' || perfil === 'admin'"
             @click="logout()"
             name="Log out"
-            >Cerrar Sesión</b-button
+            icon="ti-close"
+            >Cerrar</b-button
           ></b-col
         >
       </b-row>
@@ -80,6 +113,8 @@ import ProductoItem from "./ProductoItem";
 import { mapGetters } from "vuex";
 import gql from "graphql-tag";
 import AddProducto from "./AddProducto.vue";
+import UpdateArmazon from "./UpdateArmazon.vue";
+import EliminarProducto from "./EliminarProducto.vue";
 
 const GET_ARMAZON = gql`
   query getArmazon($marca: String!) {
@@ -101,7 +136,13 @@ const GET_ARMAZON = gql`
 `;
 export default {
   name: "ProductoList",
-  components: { ProductoItem, Card, AddProducto },
+  components: {
+    ProductoItem,
+    Card,
+    AddProducto,
+    UpdateArmazon,
+    EliminarProducto,
+  },
 
   data() {
     return {
@@ -112,9 +153,12 @@ export default {
     };
   },
   methods: {
-    actualizar() {
+    /*actualizar() {
       this.$router.push({ path: "UpdateArmazon" });
-    },
+    },*/
+    /*eliminar() {
+      this.$router.push({ path: "EliminarProducto" });
+    },*/
     logout() {
       this.$store.dispatch("cambiarLogin", false);
       this.$store.dispatch("cambiarPerfil", "");

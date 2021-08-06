@@ -13,6 +13,7 @@ import Pedido from "@/pages/Pedido.vue";
 import AddProducto from "@/pages/AddProducto.vue";
 import UpdateArmazon from "@/pages/UpdateArmazon.vue"
 import Imagen from "@/pages/Imagen.vue"
+import EliminarProducto from "@/pages/EliminarProducto.vue"
 //cliente
 import Transferencia from "@/pages/Transferencia.vue";
 import Receta from "@/pages/Receta.vue";
@@ -21,6 +22,7 @@ import Cristales from "@/pages/Cristales.vue";
 import ProductoItem from "@/pages/ProductoItem.vue";
 import ProductoList from "@/pages/ProductoList.vue";
 import CristalesItem from "@/pages/CristalesItem.vue"
+import ModificarEstado from "@/pages/ModificarEstado.vue"
 
 const routes = [
   {
@@ -28,6 +30,16 @@ const routes = [
     component: DashboardLayout,
     redirect: "/Home",
     children: [
+      {
+        path: "ModificarEstado",
+        name: "ModificarEstado",
+        component: ModificarEstado,
+      },
+      {
+        path: "EliminarProducto",
+        name: "EliminarProducto",
+        component: EliminarProducto,
+      },
       {
         path: "CristalesItem",
         name: "CristalesItem",

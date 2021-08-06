@@ -29,21 +29,20 @@ import router from "../router";
 import gql from "graphql-tag";
 import { mapActions } from "vuex";
 const GET_CLIENTE = gql`
-  query getCliente($correo: String!, $contrasena: String!) {
-    cliente(
-      where: { correo: { _eq: $correo }, contrasena: { _eq: $contrasena } }
-    ) {
-      contrasena
-      correo
-    }
+query getCliente($correo: String!, $contrasena: String!) {
+  cliente(where: {correo: {_eq: $correo}, contrasena: {_eq: $contrasena}}) {
+    contrasena
+    correo
+    idCliente
   }
+}
 `;
 export default {
   name: "Login",
   data() {
     return {
-      correo: "",
       contrasena: "",
+      correo:""
     };
   },
   apollo: {},
@@ -52,18 +51,19 @@ export default {
     ...mapActions(["cambiarLogin", "cambiarPerfil"]),
 
     login() {
-      const { contrasena, correo } = this.$data;
+      const { contrasena, correo, idCliente } = this.$data;
       this.$apollo.query({
         query: GET_CLIENTE,
         variables: {
           contrasena,
           correo,
+          idCliente,
         },
         update: (data) => data.cliente,
       });
-
-      if (this.correo == "" && this.contrasena == "") {
-        alert("campos vacios");
+      console.log(correo, this.correo, idCliente);
+      if (this.correo == "" || this.contrasena == "") {
+        alert("Campos Vacios");
       } else {
         if (correo == "admin@administrador.cl" && contrasena == "pass") {
           this.$store.dispatch("cambiarLogin", true);

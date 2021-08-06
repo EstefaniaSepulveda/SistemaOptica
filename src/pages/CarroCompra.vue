@@ -36,6 +36,7 @@
             <h2>Color: {{ armazon.color }}</h2>
             <h2>Material: {{ armazon.material }}</h2>
             <h2>Valor: ${{ armazon.valor }}</h2>
+            <h6>Código: {{armazon.idArmazon}}</h6>
           </div>
           <div>
             <a
@@ -55,10 +56,11 @@
       <div v-for="cristal in cart2" :key="cristal.idCristal">
         <div class="d-flex justify-content-between">
           <div>
-            <h1><strong>Nombre Cristal{{ cristal.nombreCristal }}</strong></h1>
+            <h1><strong>Nombre Cristal: {{ cristal.nombreCristal }}</strong></h1>
 
             <h2>Valor: ${{ cristal.valorCristal }}</h2>
             <h2>Descripción: {{ cristal.descripcion }}</h2>
+            <h6>Código: {{cristal.idCristal}}</h6>
           </div>
           <div>
             <a

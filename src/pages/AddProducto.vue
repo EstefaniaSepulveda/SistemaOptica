@@ -79,7 +79,7 @@
             </b-row>
           </b-container>
 
-          <input class="button-primary" type="submit" value="Agregar" />
+          <input class="button-primary" type="submit" value="Agregar"/>
         </form>
       </div>
     </div>
@@ -160,7 +160,9 @@ export default {
       this.id_Marca = "",
       this.stock = "",
       this.imagen = "",
+      
       alert("Producto Agregado");
+      
     },
   },
 };
