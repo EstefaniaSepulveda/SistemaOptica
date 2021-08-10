@@ -23,6 +23,7 @@ import ProductoItem from "@/pages/ProductoItem.vue";
 import ProductoList from "@/pages/ProductoList.vue";
 import CristalesItem from "@/pages/CristalesItem.vue"
 import ModificarEstado from "@/pages/ModificarEstado.vue"
+import tabla from "@/pages/tabla.vue"
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     component: DashboardLayout,
     redirect: "/Home",
     children: [
+      {
+        path: "tabla",
+        name: "tabla",
+        component: tabla,
+      },
       {
         path: "ModificarEstado",
         name: "ModificarEstado",

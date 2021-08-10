@@ -40,7 +40,7 @@ const httpLink = new HttpLink({
 const apolloClient = new ApolloClient({
   link: httpLink,
   cache: new InMemoryCache({
-    appTypename: true
+    appTypename: false
   })
 })
 
@@ -50,17 +50,9 @@ const apolloProvider = new VueApollo({
 });
 //fin conexion hasura
 
-//inicio auth0
 
-
-
-
-//fin auth0
 
 Vue.use(PaperDashboard);
-
-// Make BootstrapVue available throughout your project
-Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
