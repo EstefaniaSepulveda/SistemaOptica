@@ -90,7 +90,10 @@ const tableColumns = [
 
 const GET_TRANSFERENCIA = gql`
   query get_Tansferencia {
-    transferencia(where: {idTransferencia2: {_gt: 1}}) {
+    transferencia(
+      where: { idTransferencia2: { _gt: 1 } }
+      order_by: { estado: desc }
+    ) {
       idTransferencia2
       nombre
       apellidoP
