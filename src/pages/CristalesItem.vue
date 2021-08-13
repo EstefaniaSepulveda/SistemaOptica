@@ -6,7 +6,7 @@
           <div class="datos text-center">
             <h1>{{ cristal.nombreCristal }}</h1>
             <p>Descripción: {{ cristal.descripcion }}</p>
-            <p>Valor: ${{ cristal.valorCristal }}</p>
+            <p>Valor: {{ cristal.valorCristal }}</p>
           </div>
         </div>
         <div>

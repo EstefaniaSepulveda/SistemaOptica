@@ -150,6 +150,7 @@ export default {
       marca: "%",
       showModal: false,
       toggleModal: false,
+      
     };
   },
   methods: {

@@ -27,9 +27,10 @@
     </b-container>
     <h2>Datos de Transferencia</h2>
     <p>Banco: xxxxx</p>
+    <p>Tipo de Cuenta: xxxxx@xxxxx.com</p>
     <p>N° Cuenta: xxxxx</p>
     <p>Nombre: xxx</p>
-    <p>Correo Electronico: xxxxx@xxxxx.com</p>
+    <p>Correo Electrónico: xxxxx@xxxxx.com</p>
     <p> <strong> Por favor adjuntar comprobante de pago. </strong></p>
     <imagen></imagen>
   

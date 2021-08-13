@@ -5,6 +5,7 @@
         <h3>Nuevo Producto</h3>
 
         <form @submit.prevent="submit" method="post">
+          <p> Por favor adjuntar imagen </p>
           <imagen @URL="recibirURL"></imagen>
           <input type="text" placeholder="Valor" v-model="valor" />
           <input type="text" placeholder="Color" v-model="color" />

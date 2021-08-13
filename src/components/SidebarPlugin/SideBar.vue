@@ -13,7 +13,7 @@
             <div class="logo-img">
                 <img src="@/assets/img/optica/logo-optica.png" alt="">
             </div>
-          <label @click="optica()">Optica</label>
+          <label @click="optica()">Óptica</label>
         </a>
       </div>
       <slot>

@@ -85,6 +85,7 @@
             v-model="observaciones"
           />
           <input type="date" placeholder="Fecha Receta" v-model="fechaReceta" />
+          <p> Por favor adjuntar receta médica </p>
           <imagen></imagen>
 
           <input class="button-primary" type="submit" value="Aceptar" />
