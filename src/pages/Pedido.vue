@@ -39,7 +39,7 @@
       </b-row>
     </b-container>
     <card class="content">
-      <div class="card-body" style="font-size: medium">
+      <div class="card-body" style="font-size: small">
         <div class="overflow-auto">
           <b-pagination
             v-model="currentPage"
@@ -126,6 +126,7 @@ export default {
   apollo: {
     transferencias: {
       query: GET_TRANSFERENCIA,
+      refetchQueries: ["get_Tansferencia"],
       update: (data) => data.transferencia,
     },
   },

@@ -8,7 +8,7 @@
           <input
             type="text"
             placeholder="Código Pedido"
-            v-model="idTransferencia2"
+            v-model="idTransferencia"
           />
           <!--<b-button variant="secondary" @click="buscar()">Buscar</b-button>-->
 
@@ -59,9 +59,9 @@
 import gql from "graphql-tag";
 import { InMemoryCache } from "apollo-cache-inmemory";
 const UPDATE_ESTADO = gql`
-  mutation update_transferencia($idTransferencia2: Int!, $estado: Int!) {
+  mutation update_transferencia($idTransferencia: Int!, $estado: Int!) {
     update_transferencia(
-      where: { idTransferencia2: { _eq: $idTransferencia2 } }
+      where: { idTransferencia: { _eq: $idTransferencia } }
       _set: { estado: $estado }
     ) {
       affected_rows
@@ -81,7 +81,7 @@ export default {
       this.$apollo.mutate({
         mutation: UPDATE_ESTADO,
         variables: {
-          idTransferencia2: this.idTransferencia2,
+          idTransferencia: this.idTransferencia,
           estado: this.estado,
         },
         refetchQueries: ["get_Tansferencia"],
